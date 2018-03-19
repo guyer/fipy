@@ -123,9 +123,9 @@ class TrilinosSolver(Solver):
 
         self.var.value = numerix.reshape(numerix.array(overlappingVector), self.var.shape)
 
-        self._deleteGlobalMatrixAndVectors()
-        del self.var
-        del self.RHSvector
+#         self._deleteGlobalMatrixAndVectors()
+#         del self.var
+#         del self.RHSvector
 
     @property
     def _matrixClass(self):
