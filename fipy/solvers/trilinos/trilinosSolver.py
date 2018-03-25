@@ -102,7 +102,7 @@ class TrilinosSolver(Solver):
             if isinstance(self.var, _CoupledCellVariable):
                 dim = len(self.var.vars)
             else:
-                dim = numerix.prod(self.var.elementshape)
+                dim = numerix.prod(self.var.elementshape, dtype=int)
             offsets = numerix.arange(dim)[..., numerix.newaxis] * mesh.numberOfCells
             stackNonOverlappingCellIDs = numerix.stack([localNonOverlappingCellIDs] * dim) + offsets
             stackNonOverlappingCellIDs = stackNonOverlappingCellIDs.astype('int32')
