@@ -415,6 +415,42 @@ class _TrilinosMatrix(_SparseMatrix):
 
         return result
 
+    def insertAt(self, vector, id1, id2):
+        """
+        Insert elements of `vector` to the positions in the matrix corresponding to (`id1`,`id2`)
+
+        Note that if the matrix is already filled and a value is not already
+        present for the specified location in the matrix, the input value will
+        be ignored and a positive warning code will be returned.
+
+            >>> L = _TrilinosMatrixFromShape(rows=3, cols=3)
+            >>> L.insertAt((3.,10.,numerix.pi,2.5), (0,0,1,2), (2,1,1,0))
+            >>> print L
+                ---    10.000000   3.000000  
+                ---     3.141593      ---    
+             2.500000      ---        ---    
+            >>> L.insertAt((1.73,2.2,8.4,3.9,1.23), (0,2,0,0,1), (1,2,2,2,2))
+            >>> print L
+                ---     1.730000   3.900000  
+                ---     3.141593      ---    
+             2.500000      ---        ---    
+        """
+
+        ## This was added as it seems that trilinos does not like int64 arrays
+        if hasattr(id1, 'astype') and id1.dtype.name == 'int64':
+            id1 = id1.astype('int32')
+        if hasattr(id2, 'astype') and id2.dtype.name == 'int64':
+            id2 = id2.astype('int32')
+
+        if not self.matrix.Filled():
+            err = self.matrix.InsertGlobalValues(id1, id2, vector)
+        else:
+            # Good lord, Trilinos is PITA
+            err = self.matrix.ReplaceGlobalValues(id1, id2, vector)
+        if err < 0:
+            raise RuntimeError, "Processor %d, error code %d" \
+              % (self.comm.MyPID(), err)
+
     def addAt(self, vector, id1, id2):
         """
         Add elements of `vector` to the positions in the matrix corresponding to (`id1`,`id2`)
@@ -435,10 +471,7 @@ class _TrilinosMatrix(_SparseMatrix):
             id2 = id2.astype('int32')
 
         if not self.matrix.Filled():
-            err = self.matrix.InsertGlobalValues(id1, id2, vector)
-            if err < 0:
-                raise RuntimeError, "Processor %d, error code %d" \
-                  % (self.comm.MyPID(), err)
+            self.insertAt(vector, id1, id2)
         else:
             if self.matrix.SumIntoGlobalValues(id1, id2, vector) != 0:
                 import warnings

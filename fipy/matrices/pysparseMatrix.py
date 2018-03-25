@@ -357,7 +357,7 @@ class _PysparseMeshMatrix(_PysparseMatrixFromShape):
         A = self.matrix.copy()
         values, irow, jcol = A.find()
 
-        self.trilinosMatrix.addAt(values, irow, jcol)
+        self.trilinosMatrix.insertAt(values, irow, jcol)
         self.trilinosMatrix.finalize()
 
         return self.trilinosMatrix
