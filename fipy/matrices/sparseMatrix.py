@@ -153,6 +153,17 @@ class _SparseMatrix(object):
     def exportMmf(self, filename):
         pass
 
+    @property
+    def _bandwidth(self):
+        return 1
+
+    def _getTrilinosMatrix(self):
+        from fipy.matrices.trilinosMatrix import _TrilinosMeshMatrixKeepStencil
+        return _TrilinosMeshMatrixKeepStencil(mesh=self.mesh, bandwidth=self._bandwidth,
+                                              numberOfVariables=self.numberOfVariables,
+                                              numberOfEquations=self.numberOfEquations)
+
+
 ##     def __array__(self):
 ##      shape = self._shape
 ##      indices = numerix.indices(shape)

@@ -326,7 +326,21 @@ class _PysparseMeshMatrix(_PysparseMatrixFromShape):
         else:
             return _PysparseMatrixFromShape.__mul__(self, other)
 
-    def asTrilinosMeshMatrix(self):
+    @property
+    def _bandwidth(self):
+        A = self.matrix.copy()
+        values, irow, jcol = A.find()
+
+        if A.shape[0] == 0:
+            bandwidth = 0
+        else:
+            bandwidth = int(numerix.ceil(float(len(values)) / float(A.shape[0])))
+
+        bandwidth = 1
+
+        return bandwidth
+
+    def asTrilinosMeshMatrix(self, trilinosMatrix=None):
         """Transforms a pysparse matrix into a trilinos matrix and maintains the
         trilinos matrix as an attribute.
 
@@ -334,19 +348,14 @@ class _PysparseMeshMatrix(_PysparseMatrixFromShape):
           The trilinos matrix.
 
         """
+        if (trilinosMatrix is None):
+            if not hasattr(self, 'trilinosMatrix'):
+                self.trilinosMatrix = self._getTrilinosMatrix()
+        else:
+            self.trilinosMatrix = trilinosMatrix
+
         A = self.matrix.copy()
         values, irow, jcol = A.find()
-
-        if not hasattr(self, 'trilinosMatrix'):
-            if A.shape[0] == 0:
-                bandwidth = 0
-            else:
-                bandwidth = int(numerix.ceil(float(len(values)) / float(A.shape[0])))
-            bandwidth = 1
-            from fipy.matrices.trilinosMatrix import _TrilinosMeshMatrixKeepStencil
-            self.trilinosMatrix = _TrilinosMeshMatrixKeepStencil(mesh=self.mesh, bandwidth=bandwidth,
-                                                                 numberOfVariables=self.numberOfVariables,
-                                                                 numberOfEquations=self.numberOfEquations)
 
         self.trilinosMatrix.addAt(values, irow, jcol)
         self.trilinosMatrix.finalize()

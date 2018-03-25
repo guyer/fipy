@@ -64,7 +64,15 @@ class TrilinosSolver(Solver):
     @property
     def _globalMatrixAndVectors(self):
         if not hasattr(self, 'globalVectors'):
-            globalMatrix = self.matrix.asTrilinosMeshMatrix()
+            self._globalMatrix = self.matrix._getTrilinosMatrix()
+            self._nonOverlappingVector = Epetra.Vector(self._globalMatrix.domainMap)
+            self._nonOverlappingRHSvector = Epetra.Vector(self._globalMatrix.rangeMap)
+            self._overlappingVector = Epetra.Vector(self._globalMatrix.colMap)
+
+            self.globalVectors = (self._globalMatrix,
+                                  self._nonOverlappingVector,
+                                  self._nonOverlappingRHSvector,
+                                  self._overlappingVector)
 
             mesh = self.var.mesh
             localNonOverlappingCellIDs = mesh._localNonOverlappingCellIDs
