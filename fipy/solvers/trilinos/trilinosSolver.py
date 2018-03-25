@@ -112,7 +112,6 @@ class TrilinosSolver(Solver):
             self._nonOverlappingVector.ReplaceMyValues(self.var[s].ravel(),
                                                        stackNonOverlappingCellIDs.flat)
 
-            from fipy.variables.coupledCellVariable import _CoupledCellVariable
             if isinstance(self.RHSvector, _CoupledCellVariable):
                 RHSvector = self.RHSvector[localNonOverlappingCellIDs]
             else:
