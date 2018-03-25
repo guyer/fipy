@@ -171,3 +171,8 @@ class Solver(object):
 
     def _canSolveAsymmetric(self):
         return True
+
+    def _reset(self):
+        """Mark solver and matrix as needing to be rebuilt
+        """
+        pass

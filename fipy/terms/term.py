@@ -133,6 +133,7 @@ class Term(object):
 
     def _prepareLinearSystem(self, var, solver, boundaryConditions, dt):
         solver = self.getDefaultSolver(var, solver)
+        solver._reset()
 
         var = self._verifyVar(var)
         self._checkVar(var)

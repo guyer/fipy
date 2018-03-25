@@ -53,6 +53,8 @@ class TrilinosSolver(Solver):
         else:
             Solver.__init__(self, *args, **kwargs)
 
+        self._reset()
+
     def _storeMatrix(self, var, matrix, RHSvector):
         self.var = var
         if hasattr(self, 'matrix'):
@@ -60,6 +62,11 @@ class TrilinosSolver(Solver):
         else:
             self.matrix = matrix
         self.RHSvector = RHSvector
+
+    def _reset(self):
+        """Mark solver and matrix as needing to be rebuilt
+        """
+        self._dirty = True
 
     @property
     def _globalMatrixAndVectors(self):
@@ -74,35 +81,53 @@ class TrilinosSolver(Solver):
                                   self._nonOverlappingRHSvector,
                                   self._overlappingVector)
 
+        if self._dirty:
+            self.matrix.asTrilinosMeshMatrix(trilinosMatrix=self._globalMatrix)
+
             mesh = self.var.mesh
             localNonOverlappingCellIDs = mesh._localNonOverlappingCellIDs
+            localOverlappingCellIDs = mesh._localOverlappingCellIDs
 
-            ## The following conditional is required because empty indexing is not altogether functional.
-            ## This numpy.empty((0,))[[]] and this numpy.empty((0,))[...,[]] both work, but this
+            ## The following conditional is required because empty indexing is
+            ## not altogether functional.
+            ## numpy.empty((0,))[[]] and
+            ## numpy.empty((0,))[...,[]] both work, but
             ## numpy.empty((3, 0))[...,[]] is broken.
             if self.var.shape[-1] != 0:
                 s = (Ellipsis, localNonOverlappingCellIDs)
             else:
                 s = (localNonOverlappingCellIDs,)
 
-            nonOverlappingVector = Epetra.Vector(globalMatrix.domainMap,
-                                                 self.var[s].ravel())
             from fipy.variables.coupledCellVariable import _CoupledCellVariable
+            if isinstance(self.var, _CoupledCellVariable):
+                dim = len(self.var.vars)
+            else:
+                dim = numerix.prod(self.var.elementshape)
+            offsets = numerix.arange(dim)[..., numerix.newaxis] * mesh.numberOfCells
+            stackNonOverlappingCellIDs = numerix.stack([localNonOverlappingCellIDs] * dim) + offsets
+            stackNonOverlappingCellIDs = stackNonOverlappingCellIDs.astype('int32')
+            stackOverlappingCellIDs = numerix.stack([localOverlappingCellIDs] * dim) + offsets
+            stackOverlappingCellIDs = stackOverlappingCellIDs.astype('int32')
 
+            self._nonOverlappingVector.ReplaceMyValues(self.var[s].ravel(),
+                                                       stackNonOverlappingCellIDs.flat)
+
+            from fipy.variables.coupledCellVariable import _CoupledCellVariable
             if isinstance(self.RHSvector, _CoupledCellVariable):
                 RHSvector = self.RHSvector[localNonOverlappingCellIDs]
             else:
-                RHSvector = numerix.reshape(numerix.array(self.RHSvector), self.var.shape)[s].ravel()
+                RHSvector = numerix.reshape(numerix.array(self.RHSvector),
+                                            self.var.shape)[s].ravel()
 
-
-            nonOverlappingRHSvector = Epetra.Vector(globalMatrix.rangeMap,
-                                                    RHSvector)
+            self._nonOverlappingRHSvector.ReplaceMyValues(RHSvector,
+                                                          stackNonOverlappingCellIDs.flat)
 
             del RHSvector
 
-            overlappingVector = Epetra.Vector(globalMatrix.colMap, self.var)
+            self._overlappingVector.ReplaceMyValues(self.var.ravel(),
+                                                    stackOverlappingCellIDs.flat)
 
-            self.globalVectors = (globalMatrix, nonOverlappingVector, nonOverlappingRHSvector, overlappingVector)
+            self._dirty = False
 
         return self.globalVectors
 
@@ -113,7 +138,10 @@ class TrilinosSolver(Solver):
     def _solve(self):
         from fipy.terms import SolutionVariableNumberError
 
-        globalMatrix, nonOverlappingVector, nonOverlappingRHSvector, overlappingVector = self._globalMatrixAndVectors
+        (globalMatrix,
+         nonOverlappingVector,
+         nonOverlappingRHSvector,
+         overlappingVector) = self._globalMatrixAndVectors
 
         if not (globalMatrix.rangeMap.SameAs(globalMatrix.domainMap)
                 and globalMatrix.rangeMap.SameAs(nonOverlappingVector.Map())):
