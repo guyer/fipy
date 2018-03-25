@@ -445,11 +445,16 @@ class _TrilinosMatrix(_SparseMatrix):
         if not self.matrix.Filled():
             err = self.matrix.InsertGlobalValues(id1, id2, vector)
         else:
-            # Good lord, Trilinos is PITA
+            # Good lord, Trilinos is a PITA
             err = self.matrix.ReplaceGlobalValues(id1, id2, vector)
         if err < 0:
             raise RuntimeError, "Processor %d, error code %d" \
               % (self.comm.MyPID(), err)
+        elif err > 0:
+            import warnings
+            warnings.warn("Inserting into empty matrix position returned error code {}".format(err),
+                           UserWarning, stacklevel=2)
+
 
     def addAt(self, vector, id1, id2):
         """
