@@ -312,12 +312,22 @@ class _TrilinosMatrix(_SparseMatrix):
         """
         Put elements of `vector` at positions of the matrix corresponding to (`id1`, `id2`)
 
+        Note that if the matrix is already filled and a value is not already
+        present for the specified location in the matrix, the input value will
+        be ignored and a positive warning code will be returned.
+
             >>> L = _TrilinosMatrixFromShape(rows=3, cols=3)
             >>> L.put((3.,10.,numerix.pi,2.5), (0,0,1,2), (2,1,1,0))
             >>> print L
                 ---    10.000000   3.000000  
                 ---     3.141593      ---    
              2.500000      ---        ---    
+             >>> L.put((1.73,2.2,8.4,3.9,1.23), (0,2,0,0,1), (1,2,2,2,2))
+             >>> print L
+                 ---     1.730000   3.900000  
+                 ---     3.141593      ---    
+              2.500000      ---        ---    
+
         """
 
         if hasattr(id1, 'dtype') and id1.dtype.name == 'int64':
@@ -326,47 +336,33 @@ class _TrilinosMatrix(_SparseMatrix):
             id2 = id2.astype('int32')
 
         if self.matrix.Filled():
-            if self.matrix.ReplaceGlobalValues(id1, id2, vector) != 0:
-                import warnings
-                warnings.warn("ReplaceGlobalValues returned error code in put",
-                               UserWarning, stacklevel=2)
-                # Possible different algorithm, to guarantee success:
-                #
-                # Make a new matrix,
-                # Use addAt to put the values in it,
-                # Use replaceGlobalValues in the original matrix to zero out the terms
-                # And add the old one into the new one,
-                # Replace the old one.
-                #
-                # Would incur performance costs, and since FiPy does not use
-                # this function in such a way as would generate these errors,
-                # I have not implemented the change.
-
+            err = self.matrix.ReplaceGlobalValues(id1, id2, vector)
+            if err < 0:
+                raise RuntimeError, "ReplaceGlobalValues in filled put: Processor %d, error code %d" \
+                  % (self.comm.MyPID(), err)
         else:
 
             # This guarantees that it will actually replace the values that are there,
             # if there are any
             if self.matrix.NumGlobalNonzeros() == 0:
-                self.matrix.InsertGlobalValues(id1, id2, vector)
+                err = self.matrix.InsertGlobalValues(id1, id2, vector)
+                if err < 0:
+                    raise RuntimeError, "InsertGlobalValues in unfilled put: Processor %d, error code %d" \
+                      % (self.comm.MyPID(), err)
             else:
-                self.matrix.InsertGlobalValues(id1, id2, numerix.zeros(len(vector), 'l'))
+                err = self.matrix.InsertGlobalValues(id1, id2, numerix.zeros(len(vector), 'l'))
+                if err < 0:
+                    raise RuntimeError, "InsertGlobalValues in unfilled put: Processor %d, error code %d" \
+                      % (self.comm.MyPID(), err)
                 self.fillComplete()
-                if self.matrix.ReplaceGlobalValues(id1, id2, vector) != 0:
-                    import warnings
-                    warnings.warn("ReplaceGlobalValues returned error code in put",
-                                   UserWarning, stacklevel=2)
-                    # Possible different algorithm, to guarantee that it does not fail:
-                    #
-                    # Make a new matrix,
-                    # Use addAt to put the values in it,
-                    # Use replaceGlobalValues in the original matrix to zero out the terms
-                    # And add the old one into the new one,
-                    # Replace the old one.
-                    #
-                    # Would incur performance costs, and since FiPy does not use
-                    # this function in such a way as would generate these errors,
-                    # I have not implemented the change.
-
+                err = self.matrix.ReplaceGlobalValues(id1, id2, vector)
+                if err < 0:
+                    raise RuntimeError, "ReplaceGlobalValues in unfilled put: Processor %d, error code %d" \
+                      % (self.comm.MyPID(), err)
+        if err > 0:
+            import warnings
+            warnings.warn("Inserting into empty matrix position returned error code {}".format(err),
+                           UserWarning, stacklevel=2)
 
 
 
@@ -414,47 +410,6 @@ class _TrilinosMatrix(_SparseMatrix):
         self.matrix.ExtractDiagonalCopy(result)
 
         return result
-
-    def insertAt(self, vector, id1, id2):
-        """
-        Insert elements of `vector` to the positions in the matrix corresponding to (`id1`,`id2`)
-
-        Note that if the matrix is already filled and a value is not already
-        present for the specified location in the matrix, the input value will
-        be ignored and a positive warning code will be returned.
-
-            >>> L = _TrilinosMatrixFromShape(rows=3, cols=3)
-            >>> L.insertAt((3.,10.,numerix.pi,2.5), (0,0,1,2), (2,1,1,0))
-            >>> print L
-                ---    10.000000   3.000000  
-                ---     3.141593      ---    
-             2.500000      ---        ---    
-            >>> L.insertAt((1.73,2.2,8.4,3.9,1.23), (0,2,0,0,1), (1,2,2,2,2))
-            >>> print L
-                ---     1.730000   3.900000  
-                ---     3.141593      ---    
-             2.500000      ---        ---    
-        """
-
-        ## This was added as it seems that trilinos does not like int64 arrays
-        if hasattr(id1, 'astype') and id1.dtype.name == 'int64':
-            id1 = id1.astype('int32')
-        if hasattr(id2, 'astype') and id2.dtype.name == 'int64':
-            id2 = id2.astype('int32')
-
-        if not self.matrix.Filled():
-            err = self.matrix.InsertGlobalValues(id1, id2, vector)
-        else:
-            # Good lord, Trilinos is a PITA
-            err = self.matrix.ReplaceGlobalValues(id1, id2, vector)
-        if err < 0:
-            raise RuntimeError, "Processor %d, error code %d" \
-              % (self.comm.MyPID(), err)
-        elif err > 0:
-            import warnings
-            warnings.warn("Inserting into empty matrix position returned error code {}".format(err),
-                           UserWarning, stacklevel=2)
-
 
     def addAt(self, vector, id1, id2):
         """
