@@ -431,8 +431,12 @@ class _TrilinosMatrix(_SparseMatrix):
             id2 = id2.astype('int32')
 
         if not self.matrix.Filled():
-            self.insertAt(vector, id1, id2)
+            err = self.matrix.InsertGlobalValues(id1, id2, vector)
+            if err < 0:
+                raise RuntimeError, "Processor %d, error code %d" \
+                  % (self.comm.MyPID(), err)
         else:
+            # FIXME: Does this need to be re-zeroed if we re-use?
             if self.matrix.SumIntoGlobalValues(id1, id2, vector) != 0:
                 import warnings
                 warnings.warn("Summing into unfilled matrix returned error code",
