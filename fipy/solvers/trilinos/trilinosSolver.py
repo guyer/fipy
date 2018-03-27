@@ -86,7 +86,6 @@ class TrilinosSolver(Solver):
 
             mesh = self.var.mesh
             localNonOverlappingCellIDs = mesh._localNonOverlappingCellIDs
-            localOverlappingCellIDs = mesh._localOverlappingCellIDs
 
             ## The following conditional is required because empty indexing is
             ## not altogether functional.
@@ -98,33 +97,26 @@ class TrilinosSolver(Solver):
             else:
                 s = (localNonOverlappingCellIDs,)
 
+            nonOverlappingRowIDs = self._globalMatrix._globalNonOverlappingRowIDs.astype('int32')
+            overlappingColIDs = self._globalMatrix._globalOverlappingColIDs.astype('int32')
+
+            self._nonOverlappingVector.ReplaceGlobalValues(self.var[s].ravel(),
+                                                           nonOverlappingRowIDs)
+
             from fipy.variables.coupledCellVariable import _CoupledCellVariable
-            if isinstance(self.var, _CoupledCellVariable):
-                dim = len(self.var.vars)
-            else:
-                dim = numerix.prod(self.var.elementshape, dtype=int)
-            offsets = numerix.arange(dim)[..., numerix.newaxis] * mesh.numberOfCells
-            stackNonOverlappingCellIDs = numerix.stack([localNonOverlappingCellIDs] * dim) + offsets
-            stackNonOverlappingCellIDs = stackNonOverlappingCellIDs.astype('int32')
-            stackOverlappingCellIDs = numerix.stack([localOverlappingCellIDs] * dim) + offsets
-            stackOverlappingCellIDs = stackOverlappingCellIDs.astype('int32')
-
-            self._nonOverlappingVector.ReplaceMyValues(self.var[s].ravel(),
-                                                       stackNonOverlappingCellIDs.flat)
-
             if isinstance(self.RHSvector, _CoupledCellVariable):
                 RHSvector = self.RHSvector[localNonOverlappingCellIDs]
             else:
                 RHSvector = numerix.reshape(numerix.array(self.RHSvector),
                                             self.var.shape)[s].ravel()
 
-            self._nonOverlappingRHSvector.ReplaceMyValues(RHSvector,
-                                                          stackNonOverlappingCellIDs.flat)
+            self._nonOverlappingRHSvector.ReplaceGlobalValues(RHSvector,
+                                                              nonOverlappingRowIDs)
 
             del RHSvector
 
-            self._overlappingVector.ReplaceMyValues(self.var.ravel(),
-                                                    stackOverlappingCellIDs.flat)
+            self._overlappingVector.ReplaceGlobalValues(self.var.ravel(),
+                                                        overlappingColIDs)
 
             self._dirty = False
 
