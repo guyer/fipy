@@ -78,6 +78,9 @@
           <a href="../genindex.html" title="General Index"
              accesskey="I">index</a></li>
         <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
           <a href="scheme.html" title="Numerical Schemes"
              accesskey="N">next</a> |</li>
         <li class="right" >
@@ -118,7 +121,7 @@
 <p>To use the FVM, the solution domain must first be divided into
 non-overlapping polyhedral elements or cells.  A solution domain
 divided in such a way is generally known as a mesh (as we will see, a
-<code class="xref py py-class docutils literal notranslate"><span class="pre">Mesh</span></code> is also a <a class="reference internal" href="../glossary.html#term-FiPy"><span class="xref std std-term">FiPy</span></a> object).  A mesh consists of vertices,
+<a class="reference internal" href="../generated/fipy.meshes.mesh.html#fipy.meshes.mesh.Mesh" title="fipy.meshes.mesh.Mesh"><code class="xref py py-class docutils literal notranslate"><span class="pre">Mesh</span></code></a> is also a <a class="reference internal" href="../glossary.html#term-FiPy"><span class="xref std std-term">FiPy</span></a> object).  A mesh consists of vertices,
 faces and cells (see Figure <a class="reference internal" href="#fig-meshcartoon"><span class="std std-ref">Mesh</span></a>).  In the FVM the
 variables of interest are averaged over control volumes (CVs).  The
 CVs are either defined by the cells or are centered on the vertices.</p>
@@ -229,16 +232,16 @@ scheme, described in <a class="reference internal" href="scheme.html#sec-numeric
 </pre></div>
 </div>
 <p>where <code class="samp docutils literal notranslate"><em><span class="pre">&lt;SpecificConvectionTerm&gt;</span></em></code> can be any of
-<code class="xref py py-class docutils literal notranslate"><span class="pre">CentralDifferenceConvectionTerm</span></code>,
-<code class="xref py py-class docutils literal notranslate"><span class="pre">ExponentialConvectionTerm</span></code>,
-<code class="xref py py-class docutils literal notranslate"><span class="pre">HybridConvectionTerm</span></code>,
-<code class="xref py py-class docutils literal notranslate"><span class="pre">PowerLawConvectionTerm</span></code>,
-<code class="xref py py-class docutils literal notranslate"><span class="pre">UpwindConvectionTerm</span></code>,
-<code class="xref py py-class docutils literal notranslate"><span class="pre">ExplicitUpwindConvectionTerm</span></code>, or
-<code class="xref py py-class docutils literal notranslate"><span class="pre">VanLeerConvectionTerm</span></code>.
+<a class="reference internal" href="../generated/fipy.terms.centralDiffConvectionTerm.html#fipy.terms.centralDiffConvectionTerm.CentralDifferenceConvectionTerm" title="fipy.terms.centralDiffConvectionTerm.CentralDifferenceConvectionTerm"><code class="xref py py-class docutils literal notranslate"><span class="pre">CentralDifferenceConvectionTerm</span></code></a>,
+<a class="reference internal" href="../generated/fipy.terms.exponentialConvectionTerm.html#fipy.terms.exponentialConvectionTerm.ExponentialConvectionTerm" title="fipy.terms.exponentialConvectionTerm.ExponentialConvectionTerm"><code class="xref py py-class docutils literal notranslate"><span class="pre">ExponentialConvectionTerm</span></code></a>,
+<a class="reference internal" href="../generated/fipy.terms.hybridConvectionTerm.html#fipy.terms.hybridConvectionTerm.HybridConvectionTerm" title="fipy.terms.hybridConvectionTerm.HybridConvectionTerm"><code class="xref py py-class docutils literal notranslate"><span class="pre">HybridConvectionTerm</span></code></a>,
+<a class="reference internal" href="../generated/fipy.terms.powerLawConvectionTerm.html#fipy.terms.powerLawConvectionTerm.PowerLawConvectionTerm" title="fipy.terms.powerLawConvectionTerm.PowerLawConvectionTerm"><code class="xref py py-class docutils literal notranslate"><span class="pre">PowerLawConvectionTerm</span></code></a>,
+<a class="reference internal" href="../generated/fipy.terms.upwindConvectionTerm.html#fipy.terms.upwindConvectionTerm.UpwindConvectionTerm" title="fipy.terms.upwindConvectionTerm.UpwindConvectionTerm"><code class="xref py py-class docutils literal notranslate"><span class="pre">UpwindConvectionTerm</span></code></a>,
+<a class="reference internal" href="../generated/fipy.terms.explicitUpwindConvectionTerm.html#fipy.terms.explicitUpwindConvectionTerm.ExplicitUpwindConvectionTerm" title="fipy.terms.explicitUpwindConvectionTerm.ExplicitUpwindConvectionTerm"><code class="xref py py-class docutils literal notranslate"><span class="pre">ExplicitUpwindConvectionTerm</span></code></a>, or
+<a class="reference internal" href="../generated/fipy.terms.vanLeerConvectionTerm.html#fipy.terms.vanLeerConvectionTerm.VanLeerConvectionTerm" title="fipy.terms.vanLeerConvectionTerm.VanLeerConvectionTerm"><code class="xref py py-class docutils literal notranslate"><span class="pre">VanLeerConvectionTerm</span></code></a>.
 The differences between these convection schemes are described
 in Section <a class="reference internal" href="scheme.html#sec-numericalschemes"><span class="std std-ref">Numerical Schemes</span></a>. The velocity coefficient
-<code class="docutils literal notranslate"><span class="pre">u</span></code> must be a rank-1 <code class="xref py py-class docutils literal notranslate"><span class="pre">FaceVariable</span></code>, or a
+<code class="docutils literal notranslate"><span class="pre">u</span></code> must be a rank-1 <a class="reference internal" href="../generated/fipy.variables.faceVariable.html#fipy.variables.faceVariable.FaceVariable" title="fipy.variables.faceVariable.FaceVariable"><code class="xref py py-class docutils literal notranslate"><span class="pre">FaceVariable</span></code></a>, or a
 constant vector in the form of a <a class="reference internal" href="../glossary.html#term-Python"><span class="xref std std-term">Python</span></a> list or
 tuple, <em>e.g.</em> <code class="docutils literal notranslate"><span class="pre">((1,),</span> <span class="pre">(2,))</span></code> for a vector in 2D.</p>
 </section>
@@ -269,12 +272,12 @@ currently included in <a class="reference internal" href="../glossary.html#term-
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">ExplicitDiffusionTerm</span><span class="p">(</span><span class="n">coeff</span><span class="o">=</span><span class="n">Gamma1</span><span class="p">)</span>
 </pre></div>
 </div>
-<p><code class="xref py py-class docutils literal notranslate"><span class="pre">ExplicitDiffusionTerm</span></code> is provided primarily for
-illustrative purposes, although <code class="xref py py-mod docutils literal notranslate"><span class="pre">examples.diffusion.mesh1D</span></code>
+<p><a class="reference internal" href="../generated/fipy.terms.explicitDiffusionTerm.html#fipy.terms.explicitDiffusionTerm.ExplicitDiffusionTerm" title="fipy.terms.explicitDiffusionTerm.ExplicitDiffusionTerm"><code class="xref py py-class docutils literal notranslate"><span class="pre">ExplicitDiffusionTerm</span></code></a> is provided primarily for
+illustrative purposes, although <a class="reference internal" href="../generated/examples.diffusion.mesh1D.html#module-examples.diffusion.mesh1D" title="examples.diffusion.mesh1D"><code class="xref py py-mod docutils literal notranslate"><span class="pre">examples.diffusion.mesh1D</span></code></a>
 demonstrates its use in Crank-Nicolson time stepping.
-<code class="xref py py-class docutils literal notranslate"><span class="pre">ImplicitDiffusionTerm</span></code> is almost always
-preferred (<code class="xref py py-class docutils literal notranslate"><span class="pre">DiffusionTerm</span></code> is a synonym for
-<code class="xref py py-class docutils literal notranslate"><span class="pre">ImplicitDiffusionTerm</span></code> to reinforce this
+<a class="reference internal" href="../generated/fipy.terms.implicitDiffusionTerm.html#fipy.terms.implicitDiffusionTerm.ImplicitDiffusionTerm" title="fipy.terms.implicitDiffusionTerm.ImplicitDiffusionTerm"><code class="xref py py-class docutils literal notranslate"><span class="pre">ImplicitDiffusionTerm</span></code></a> is almost always
+preferred (<a class="reference internal" href="../generated/fipy.terms.diffusionTerm.html#fipy.terms.diffusionTerm.DiffusionTerm" title="fipy.terms.diffusionTerm.DiffusionTerm"><code class="xref py py-class docutils literal notranslate"><span class="pre">DiffusionTerm</span></code></a> is a synonym for
+<a class="reference internal" href="../generated/fipy.terms.implicitDiffusionTerm.html#fipy.terms.implicitDiffusionTerm.ImplicitDiffusionTerm" title="fipy.terms.implicitDiffusionTerm.ImplicitDiffusionTerm"><code class="xref py py-class docutils literal notranslate"><span class="pre">ImplicitDiffusionTerm</span></code></a> to reinforce this
 preference). One can also create an explicit diffusion term with</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="p">(</span><span class="n">Gamma1</span> <span class="o">*</span> <span class="n">phi</span><span class="o">.</span><span class="n">faceGrad</span><span class="p">)</span><span class="o">.</span><span class="n">divergence</span>
 </pre></div>
@@ -322,7 +325,7 @@ mathematical form, <em>e.g.</em>, <span class="math notranslate nohighlight">\(3
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>Functions like <code class="xref py py-func docutils literal notranslate"><span class="pre">sin()</span></code> can be obtained from the
-<code class="xref py py-mod docutils literal notranslate"><span class="pre">fipy.tools.numerix</span></code> module.</p>
+<a class="reference internal" href="../generated/fipy.tools.numerix.html#module-fipy.tools.numerix" title="fipy.tools.numerix"><code class="xref py py-mod docutils literal notranslate"><span class="pre">fipy.tools.numerix</span></code></a> module.</p>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
 <p>Generally, things will not work as expected if the equivalent
@@ -382,7 +385,7 @@ D_f &amp;= \frac{A_f \Gamma_f}{d_{AP}}.\end{split}\]</div>
 
 
                 <div class='last-updated'>
-                Last updated on Aug 08, 2023.
+                Last updated on Aug 09, 2023.
                 Created using <a href="http://sphinx-doc.org/">Sphinx</a> 5.3.0.
                 </div>
               </div>
