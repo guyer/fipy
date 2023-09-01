@@ -33,26 +33,22 @@
     <![endif]-->
     <!--[if (gte IE 6)&(lte IE 8)]>
   <script type="text/javascript" src="https://www.nist.gov/sites/all/themes/nist_style/js/selectivizr-min.js"></script>
-  <![endif]--><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+  <![endif]--><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>fipy.terms.term &#8212; FiPy 3.1.3+1049.g7a10ced2 documentation</title>
+    <title>fipy.terms.term &#8212; FiPy 0+unknown documentation</title>
     <link rel="stylesheet" href="../_static/ntd2d.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/ntd2d.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../_static/ntd2d.css?v=de7af573" />
     <link rel="stylesheet" type="text/css" href="../_static/plot_directive.css" />
     <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
-    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
-    <script src="../_static/jquery.js"></script>
-    <script src="../_static/underscore.js"></script>
-    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
-    <script src="../_static/doctools.js"></script>
-    <script src="../_static/sphinx_highlight.js"></script>
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js?v=f0cffefe"></script>
+    <script src="../_static/doctools.js?v=888ff710"></script>
+    <script src="../_static/sphinx_highlight.js?v=4825356b"></script>
     <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-    <link rel="shortcut icon" href="../_static/favicon.ico"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="top" title="FiPy 3.1.3+1049.g7a10ced2 documentation" href="../contents.html" />
+    <link rel="top" title="FiPy 0+unknown documentation" href="../contents.html" />
     <link rel="up" title="fipy.terms" href="fipy.terms.html" />
     <link rel="next" title="fipy.terms.test" href="fipy.terms.test.html" />
     <link rel="prev" title="fipy.terms.sourceTerm" href="fipy.terms.sourceTerm.html" />
@@ -121,10 +117,6 @@
 <span id="fipy-terms-term"></span><h1>fipy.terms.term<a class="headerlink" href="#module-fipy.terms.term" title="Permalink to this heading">¶</a></h1>
 <p class="rubric">Classes</p>
 <table class="autosummary longtable docutils align-default">
-<colgroup>
-<col style="width: 10%" />
-<col style="width: 90%" />
-</colgroup>
 <tbody>
 <tr class="row-odd"><td><p><a class="reference internal" href="#fipy.terms.term.Term" title="fipy.terms.term.Term"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Term</span></code></a>([coeff, var])</p></td>
 <td><p><div class="admonition attention">
@@ -145,7 +137,7 @@
 </div>
 <p>Create a <cite>Term</cite>.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><p><strong>coeff</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.11)"><em>float</em></a><em> or </em><a class="reference internal" href="fipy.variables.cellVariable.html#fipy.variables.cellVariable.CellVariable" title="fipy.variables.cellVariable.CellVariable"><em>CellVariable</em></a><em> or </em><a class="reference internal" href="fipy.variables.faceVariable.html#fipy.variables.faceVariable.FaceVariable" title="fipy.variables.faceVariable.FaceVariable"><em>FaceVariable</em></a>) – Coefficient for the term.  <cite>FaceVariable</cite> objects are only
 acceptable for diffusion or convection terms.</p>
 </dd>
@@ -206,7 +198,7 @@ applying under-relaxation.</p>
 </pre></div>
 </div>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>var</strong> (<a class="reference internal" href="fipy.variables.cellVariable.html#fipy.variables.cellVariable.CellVariable" title="fipy.variables.cellVariable.CellVariable"><em>CellVariable</em></a>) – <cite>Variable</cite> to be solved for.  Provides the initial condition,
 the old value and holds the solution on completion.</p></li>
@@ -221,10 +213,10 @@ under-relaxation</p></li>
 customize the residual calculation.</p></li>
 </ul>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p><strong>error</strong> – The residual vector <span class="math notranslate nohighlight">\(\vec{e}=\mathsf{L}\vec{x}_\text{old} - \vec{b}\)</span></p>
 </dd>
-<dt class="field-odd">Return type</dt>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
 <dd class="field-odd"><p><a class="reference internal" href="fipy.variables.cellVariable.html#fipy.variables.cellVariable.CellVariable" title="fipy.variables.cellVariable.CellVariable"><em>CellVariable</em></a></p>
 </dd>
 </dl>
@@ -245,7 +237,7 @@ applying under-relaxation.</p>
 </pre></div>
 </div>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>var</strong> (<a class="reference internal" href="fipy.variables.cellVariable.html#fipy.variables.cellVariable.CellVariable" title="fipy.variables.cellVariable.CellVariable"><em>CellVariable</em></a>) – <cite>Variable</cite> to be solved for.  Provides the initial condition,
 the old value and holds the solution on completion.</p></li>
@@ -260,10 +252,10 @@ under-relaxation</p></li>
 customize the residual calculation.</p></li>
 </ul>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p><strong>residual</strong> – The residual vector <span class="math notranslate nohighlight">\(\vec{r}=\mathsf{L}\vec{x} - \vec{b}\)</span></p>
 </dd>
-<dt class="field-odd">Return type</dt>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
 <dd class="field-odd"><p><a class="reference internal" href="fipy.variables.cellVariable.html#fipy.variables.cellVariable.CellVariable" title="fipy.variables.cellVariable.CellVariable"><em>CellVariable</em></a></p>
 </dd>
 </dl>
@@ -284,7 +276,7 @@ customize the residual calculation.</p></li>
 <p>This method also recalculates and returns the residual as well as
 applying under-relaxation.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>var</strong> (<a class="reference internal" href="fipy.variables.cellVariable.html#fipy.variables.cellVariable.CellVariable" title="fipy.variables.cellVariable.CellVariable"><em>CellVariable</em></a>) – <cite>Variable</cite> to be solved for.  Provides the initial condition,
 the old value and holds the solution on completion.</p></li>
@@ -299,7 +291,7 @@ under-relaxation</p></li>
 customize the residual calculation.</p></li>
 </ul>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p><ul class="simple">
 <li><p><strong>residual</strong> (<em>~fipy.variables.cellVariable.CellVariable</em>) – The residual vector <span class="math notranslate nohighlight">\(\vec{r}=\mathsf{L}\vec{x} - \vec{b}\)</span></p></li>
 <li><p><strong>norm</strong> (<em>float</em>) – The L2 norm of <cite>residual</cite>, <span class="math notranslate nohighlight">\(\|\vec{r}\|_2\)</span></p></li>
@@ -316,7 +308,7 @@ customize the residual calculation.</p></li>
 does not return the residual. It should be used when the
 residual is not required.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>var</strong> (<a class="reference internal" href="fipy.variables.cellVariable.html#fipy.variables.cellVariable.CellVariable" title="fipy.variables.cellVariable.CellVariable"><em>CellVariable</em></a>) – <cite>Variable</cite> to be solved for.  Provides the initial condition,
 the old value and holds the solution on completion.</p></li>
@@ -337,7 +329,7 @@ selected.</p></li>
 also recalculates and returns the residual as well as applying
 under-relaxation.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>var</strong> (<a class="reference internal" href="fipy.variables.cellVariable.html#fipy.variables.cellVariable.CellVariable" title="fipy.variables.cellVariable.CellVariable"><em>CellVariable</em></a>) – <cite>Variable</cite> to be solved for.  Provides the initial condition,
 the old value and holds the solution on completion.</p></li>
@@ -359,10 +351,10 @@ customize the residual calculation.</p></li>
 <cite>Term</cite></p></li>
 </ul>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p><strong>residual</strong> – The residual vector <span class="math notranslate nohighlight">\(\vec{r}=\mathsf{L}\vec{x} - \vec{b}\)</span></p>
 </dd>
-<dt class="field-odd">Return type</dt>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
 <dd class="field-odd"><p><a class="reference internal" href="fipy.variables.cellVariable.html#fipy.variables.cellVariable.CellVariable" title="fipy.variables.cellVariable.CellVariable"><em>CellVariable</em></a></p>
 </dd>
 </dl>
@@ -375,7 +367,7 @@ customize the residual calculation.</p></li>
 
                 <div class='last-updated'>
                 Last updated on Sep 01, 2023.
-                Created using <a href="http://sphinx-doc.org/">Sphinx</a> 5.3.0.
+                Created using <a href="http://sphinx-doc.org/">Sphinx</a> 7.1.2.
                 </div>
               </div>
   </div>  
@@ -383,11 +375,8 @@ customize the residual calculation.</p></li>
       <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
         <div class="sphinxsidebarwrapper">
 
-            <p class="logo"><a href="../contents.html">
-              <img class="logo" src="../_static/logo.png" alt="Logo"/>
-            </a></p>
 <strong>FiPy: A Finite Volume PDE Solver Using Python</strong><br />
-Version 3.1.3+1049.g7a10ced2
+Version 0+unknown
 
   <div class="sphinxsidebarsection">
   <h3><a href="../contents.html">Table Of Contents</a></h3>

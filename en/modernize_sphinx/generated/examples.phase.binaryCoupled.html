@@ -33,26 +33,22 @@
     <![endif]-->
     <!--[if (gte IE 6)&(lte IE 8)]>
   <script type="text/javascript" src="https://www.nist.gov/sites/all/themes/nist_style/js/selectivizr-min.js"></script>
-  <![endif]--><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+  <![endif]--><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>examples.phase.binaryCoupled &#8212; FiPy 3.1.3+1049.g7a10ced2 documentation</title>
+    <title>examples.phase.binaryCoupled &#8212; FiPy 0+unknown documentation</title>
     <link rel="stylesheet" href="../_static/ntd2d.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/ntd2d.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../_static/ntd2d.css?v=de7af573" />
     <link rel="stylesheet" type="text/css" href="../_static/plot_directive.css" />
     <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
-    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
-    <script src="../_static/jquery.js"></script>
-    <script src="../_static/underscore.js"></script>
-    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
-    <script src="../_static/doctools.js"></script>
-    <script src="../_static/sphinx_highlight.js"></script>
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js?v=f0cffefe"></script>
+    <script src="../_static/doctools.js?v=888ff710"></script>
+    <script src="../_static/sphinx_highlight.js?v=4825356b"></script>
     <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-    <link rel="shortcut icon" href="../_static/favicon.ico"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="top" title="FiPy 3.1.3+1049.g7a10ced2 documentation" href="../contents.html" />
+    <link rel="top" title="FiPy 0+unknown documentation" href="../contents.html" />
     <link rel="up" title="examples.phase" href="examples.phase.html" />
     <link rel="next" title="examples.phase.impingement" href="examples.phase.impingement.html" />
     <link rel="prev" title="examples.phase.binary" href="examples.phase.binary.html" />
@@ -142,7 +138,7 @@ As in <a class="reference internal" href="examples.phase.simple.html#module-exam
     + \frac{\kappa_C}{2}\abs{\nabla C}^2
 \right\} dV\]</div>
 <p>over the volume <span class="math notranslate nohighlight">\(\mathcal{V}\)</span> as a function of phase <span class="math notranslate nohighlight">\(\phi\)</span>
-<a class="footnote-reference brackets" href="#phicoupled" id="id4">1</a></p>
+<a class="footnote-reference brackets" href="#phicoupled" id="id4" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a></p>
 <div class="doctest highlight-default notranslate" id="index-1"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">phase</span> <span class="o">=</span> <span class="n">CellVariable</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;phase&quot;</span><span class="p">,</span> <span class="n">mesh</span><span class="o">=</span><span class="n">mesh</span><span class="p">,</span> <span class="n">hasOld</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -150,7 +146,7 @@ As in <a class="reference internal" href="examples.phase.simple.html#module-exam
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">C</span> <span class="o">=</span> <span class="n">CellVariable</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;composition&quot;</span><span class="p">,</span> <span class="n">mesh</span><span class="o">=</span><span class="n">mesh</span><span class="p">,</span> <span class="n">hasOld</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>and temperature <span class="math notranslate nohighlight">\(T\)</span> <a class="footnote-reference brackets" href="#tcoupled" id="id5">2</a></p>
+<p>and temperature <span class="math notranslate nohighlight">\(T\)</span> <a class="footnote-reference brackets" href="#tcoupled" id="id5" role="doc-noteref"><span class="fn-bracket">[</span>2<span class="fn-bracket">]</span></a></p>
 <div class="doctest highlight-default notranslate" id="index-2"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">T</span> <span class="o">=</span> <span class="n">Variable</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;temperature&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -657,25 +653,27 @@ timesteps to reach equilibrium. If we waited sufficiently long, we
 could again verify the final concentrations and phase fraction against the
 expected values.</p>
 <p class="rubric">Footnotes</p>
-<dl class="footnote brackets">
-<dt class="label" id="phicoupled"><span class="brackets"><a class="fn-backref" href="#id4">1</a></span></dt>
-<dd><p>We will find that we need to “sweep” this non-linear problem
+<aside class="footnote-list brackets">
+<aside class="footnote brackets" id="phicoupled" role="doc-footnote">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id4">1</a><span class="fn-bracket">]</span></span>
+<p>We will find that we need to “sweep” this non-linear problem
 (see <em>e.g.</em> the composition-dependent diffusivity example in
 <a class="reference internal" href="examples.diffusion.mesh1D.html#module-examples.diffusion.mesh1D" title="examples.diffusion.mesh1D"><code class="xref py py-mod docutils literal notranslate"><span class="pre">examples.diffusion.mesh1D</span></code></a>), so we declare <span class="math notranslate nohighlight">\(\phi\)</span> and <span class="math notranslate nohighlight">\(C\)</span>
 to retain an “old” value.</p>
-</dd>
-<dt class="label" id="tcoupled"><span class="brackets"><a class="fn-backref" href="#id5">2</a></span></dt>
-<dd><p>we are going to want to
+</aside>
+<aside class="footnote brackets" id="tcoupled" role="doc-footnote">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id5">2</a><span class="fn-bracket">]</span></span>
+<p>we are going to want to
 examine different temperatures in this example, so we declare <span class="math notranslate nohighlight">\(T\)</span>
 as a <a class="reference internal" href="fipy.variables.variable.html#fipy.variables.variable.Variable" title="fipy.variables.variable.Variable"><code class="xref py py-class docutils literal notranslate"><span class="pre">Variable</span></code></a></p>
-</dd>
-</dl>
+</aside>
+</aside>
 </section>
 
 
                 <div class='last-updated'>
                 Last updated on Sep 01, 2023.
-                Created using <a href="http://sphinx-doc.org/">Sphinx</a> 5.3.0.
+                Created using <a href="http://sphinx-doc.org/">Sphinx</a> 7.1.2.
                 </div>
               </div>
   </div>  
@@ -683,11 +681,8 @@ as a <a class="reference internal" href="fipy.variables.variable.html#fipy.varia
       <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
         <div class="sphinxsidebarwrapper">
 
-            <p class="logo"><a href="../contents.html">
-              <img class="logo" src="../_static/logo.png" alt="Logo"/>
-            </a></p>
 <strong>FiPy: A Finite Volume PDE Solver Using Python</strong><br />
-Version 3.1.3+1049.g7a10ced2
+Version 0+unknown
 
 <div class="sphinxsidebarsection">
   <h4>Previous topic</h4>

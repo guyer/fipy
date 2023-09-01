@@ -33,25 +33,21 @@
     <![endif]-->
     <!--[if (gte IE 6)&(lte IE 8)]>
   <script type="text/javascript" src="https://www.nist.gov/sites/all/themes/nist_style/js/selectivizr-min.js"></script>
-  <![endif]--><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+  <![endif]--><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>fipy.terms &#8212; FiPy 3.1.3+1049.g7a10ced2 documentation</title>
+    <title>fipy.terms &#8212; FiPy 0+unknown documentation</title>
     <link rel="stylesheet" href="../_static/ntd2d.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/ntd2d.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../_static/ntd2d.css?v=de7af573" />
     <link rel="stylesheet" type="text/css" href="../_static/plot_directive.css" />
     <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
-    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
-    <script src="../_static/jquery.js"></script>
-    <script src="../_static/underscore.js"></script>
-    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
-    <script src="../_static/doctools.js"></script>
-    <script src="../_static/sphinx_highlight.js"></script>
-    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js?v=f0cffefe"></script>
+    <script src="../_static/doctools.js?v=888ff710"></script>
+    <script src="../_static/sphinx_highlight.js?v=4825356b"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="top" title="FiPy 3.1.3+1049.g7a10ced2 documentation" href="../contents.html" />
+    <link rel="top" title="FiPy 0+unknown documentation" href="../contents.html" />
     <link rel="up" title="fipy" href="fipy.html" />
     <link rel="next" title="fipy.terms.abstractBinaryTerm" href="fipy.terms.abstractBinaryTerm.html" />
     <link rel="prev" title="fipy.steppers.stepper" href="fipy.steppers.stepper.html" />
@@ -120,10 +116,6 @@
 <p><a class="reference internal" href="../numerical/discret.html#section-discretization"><span class="std std-ref">Discretizations</span></a> of partial differential equation expressions</p>
 <p class="rubric">Exceptions</p>
 <table class="autosummary longtable docutils align-default">
-<colgroup>
-<col style="width: 10%" />
-<col style="width: 90%" />
-</colgroup>
 <tbody>
 <tr class="row-odd"><td><p><a class="reference internal" href="#fipy.terms.AbstractBaseClassError" title="fipy.terms.AbstractBaseClassError"><code class="xref py py-obj docutils literal notranslate"><span class="pre">AbstractBaseClassError</span></code></a>([s])</p></td>
 <td><p></p></td>
@@ -204,6 +196,13 @@
 </dd></dl>
 
 <dl class="py method">
+<dt class="sig sig-object py" id="fipy.terms.AbstractBaseClassError.add_note">
+<span class="sig-name descname"><span class="pre">add_note</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#fipy.terms.AbstractBaseClassError.add_note" title="Permalink to this definition">¶</a></dt>
+<dd><p>Exception.add_note(note) –
+add a note to the exception</p>
+</dd></dl>
+
+<dl class="py method">
 <dt class="sig sig-object py" id="fipy.terms.AbstractBaseClassError.with_traceback">
 <span class="sig-name descname"><span class="pre">with_traceback</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#fipy.terms.AbstractBaseClassError.with_traceback" title="Permalink to this definition">¶</a></dt>
 <dd><p>Exception.with_traceback(tb) –
@@ -262,6 +261,13 @@ set self.__traceback__ to tb and return self.</p>
 <dt class="sig sig-object py" id="fipy.terms.ExplicitVariableError.__str__">
 <span class="sig-name descname"><span class="pre">__str__</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#fipy.terms.ExplicitVariableError.__str__" title="Permalink to this definition">¶</a></dt>
 <dd><p>Return str(self).</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="fipy.terms.ExplicitVariableError.add_note">
+<span class="sig-name descname"><span class="pre">add_note</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#fipy.terms.ExplicitVariableError.add_note" title="Permalink to this definition">¶</a></dt>
+<dd><p>Exception.add_note(note) –
+add a note to the exception</p>
 </dd></dl>
 
 <dl class="py method">
@@ -326,6 +332,13 @@ set self.__traceback__ to tb and return self.</p>
 </dd></dl>
 
 <dl class="py method">
+<dt class="sig sig-object py" id="fipy.terms.IncorrectSolutionVariable.add_note">
+<span class="sig-name descname"><span class="pre">add_note</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#fipy.terms.IncorrectSolutionVariable.add_note" title="Permalink to this definition">¶</a></dt>
+<dd><p>Exception.add_note(note) –
+add a note to the exception</p>
+</dd></dl>
+
+<dl class="py method">
 <dt class="sig sig-object py" id="fipy.terms.IncorrectSolutionVariable.with_traceback">
 <span class="sig-name descname"><span class="pre">with_traceback</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#fipy.terms.IncorrectSolutionVariable.with_traceback" title="Permalink to this definition">¶</a></dt>
 <dd><p>Exception.with_traceback(tb) –
@@ -384,6 +397,13 @@ set self.__traceback__ to tb and return self.</p>
 <dt class="sig sig-object py" id="fipy.terms.SolutionVariableNumberError.__str__">
 <span class="sig-name descname"><span class="pre">__str__</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#fipy.terms.SolutionVariableNumberError.__str__" title="Permalink to this definition">¶</a></dt>
 <dd><p>Return str(self).</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="fipy.terms.SolutionVariableNumberError.add_note">
+<span class="sig-name descname"><span class="pre">add_note</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#fipy.terms.SolutionVariableNumberError.add_note" title="Permalink to this definition">¶</a></dt>
+<dd><p>Exception.add_note(note) –
+add a note to the exception</p>
 </dd></dl>
 
 <dl class="py method">
@@ -448,6 +468,13 @@ set self.__traceback__ to tb and return self.</p>
 </dd></dl>
 
 <dl class="py method">
+<dt class="sig sig-object py" id="fipy.terms.SolutionVariableRequiredError.add_note">
+<span class="sig-name descname"><span class="pre">add_note</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#fipy.terms.SolutionVariableRequiredError.add_note" title="Permalink to this definition">¶</a></dt>
+<dd><p>Exception.add_note(note) –
+add a note to the exception</p>
+</dd></dl>
+
+<dl class="py method">
 <dt class="sig sig-object py" id="fipy.terms.SolutionVariableRequiredError.with_traceback">
 <span class="sig-name descname"><span class="pre">with_traceback</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#fipy.terms.SolutionVariableRequiredError.with_traceback" title="Permalink to this definition">¶</a></dt>
 <dd><p>Exception.with_traceback(tb) –
@@ -506,6 +533,13 @@ set self.__traceback__ to tb and return self.</p>
 <dt class="sig sig-object py" id="fipy.terms.TermMultiplyError.__str__">
 <span class="sig-name descname"><span class="pre">__str__</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#fipy.terms.TermMultiplyError.__str__" title="Permalink to this definition">¶</a></dt>
 <dd><p>Return str(self).</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="fipy.terms.TermMultiplyError.add_note">
+<span class="sig-name descname"><span class="pre">add_note</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#fipy.terms.TermMultiplyError.add_note" title="Permalink to this definition">¶</a></dt>
+<dd><p>Exception.add_note(note) –
+add a note to the exception</p>
 </dd></dl>
 
 <dl class="py method">
@@ -570,6 +604,13 @@ set self.__traceback__ to tb and return self.</p>
 </dd></dl>
 
 <dl class="py method">
+<dt class="sig sig-object py" id="fipy.terms.TransientTermError.add_note">
+<span class="sig-name descname"><span class="pre">add_note</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#fipy.terms.TransientTermError.add_note" title="Permalink to this definition">¶</a></dt>
+<dd><p>Exception.add_note(note) –
+add a note to the exception</p>
+</dd></dl>
+
+<dl class="py method">
 <dt class="sig sig-object py" id="fipy.terms.TransientTermError.with_traceback">
 <span class="sig-name descname"><span class="pre">with_traceback</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#fipy.terms.TransientTermError.with_traceback" title="Permalink to this definition">¶</a></dt>
 <dd><p>Exception.with_traceback(tb) –
@@ -631,6 +672,13 @@ set self.__traceback__ to tb and return self.</p>
 </dd></dl>
 
 <dl class="py method">
+<dt class="sig sig-object py" id="fipy.terms.VectorCoeffError.add_note">
+<span class="sig-name descname"><span class="pre">add_note</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#fipy.terms.VectorCoeffError.add_note" title="Permalink to this definition">¶</a></dt>
+<dd><p>Exception.add_note(note) –
+add a note to the exception</p>
+</dd></dl>
+
+<dl class="py method">
 <dt class="sig sig-object py" id="fipy.terms.VectorCoeffError.with_traceback">
 <span class="sig-name descname"><span class="pre">with_traceback</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#fipy.terms.VectorCoeffError.with_traceback" title="Permalink to this definition">¶</a></dt>
 <dd><p>Exception.with_traceback(tb) –
@@ -641,10 +689,6 @@ set self.__traceback__ to tb and return self.</p>
 
 <p class="rubric">Modules</p>
 <table class="autosummary longtable docutils align-default">
-<colgroup>
-<col style="width: 10%" />
-<col style="width: 90%" />
-</colgroup>
 <tbody>
 <tr class="row-odd"><td><p><a class="reference internal" href="fipy.terms.abstractBinaryTerm.html#module-fipy.terms.abstractBinaryTerm" title="fipy.terms.abstractBinaryTerm"><code class="xref py py-obj docutils literal notranslate"><span class="pre">fipy.terms.abstractBinaryTerm</span></code></a></p></td>
 <td><p></p></td>
@@ -749,7 +793,7 @@ set self.__traceback__ to tb and return self.</p>
 
                 <div class='last-updated'>
                 Last updated on Sep 01, 2023.
-                Created using <a href="http://sphinx-doc.org/">Sphinx</a> 5.3.0.
+                Created using <a href="http://sphinx-doc.org/">Sphinx</a> 7.1.2.
                 </div>
               </div>
   </div>  
@@ -757,11 +801,8 @@ set self.__traceback__ to tb and return self.</p>
       <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
         <div class="sphinxsidebarwrapper">
 
-            <p class="logo"><a href="../contents.html">
-              <img class="logo" src="../_static/logo.png" alt="Logo"/>
-            </a></p>
 <strong>FiPy: A Finite Volume PDE Solver Using Python</strong><br />
-Version 3.1.3+1049.g7a10ced2
+Version 0+unknown
 
   <div class="sphinxsidebarsection">
   <h3><a href="../contents.html">Table Of Contents</a></h3>
@@ -776,6 +817,7 @@ Version 3.1.3+1049.g7a10ced2
 <li><a class="reference internal" href="#fipy.terms.AbstractBaseClassError.__repr__"><code class="docutils literal notranslate"><span class="pre">AbstractBaseClassError.__repr__()</span></code></a></li>
 <li><a class="reference internal" href="#fipy.terms.AbstractBaseClassError.__setattr__"><code class="docutils literal notranslate"><span class="pre">AbstractBaseClassError.__setattr__()</span></code></a></li>
 <li><a class="reference internal" href="#fipy.terms.AbstractBaseClassError.__str__"><code class="docutils literal notranslate"><span class="pre">AbstractBaseClassError.__str__()</span></code></a></li>
+<li><a class="reference internal" href="#fipy.terms.AbstractBaseClassError.add_note"><code class="docutils literal notranslate"><span class="pre">AbstractBaseClassError.add_note()</span></code></a></li>
 <li><a class="reference internal" href="#fipy.terms.AbstractBaseClassError.with_traceback"><code class="docutils literal notranslate"><span class="pre">AbstractBaseClassError.with_traceback()</span></code></a></li>
 </ul>
 </li>
@@ -788,6 +830,7 @@ Version 3.1.3+1049.g7a10ced2
 <li><a class="reference internal" href="#fipy.terms.ExplicitVariableError.__repr__"><code class="docutils literal notranslate"><span class="pre">ExplicitVariableError.__repr__()</span></code></a></li>
 <li><a class="reference internal" href="#fipy.terms.ExplicitVariableError.__setattr__"><code class="docutils literal notranslate"><span class="pre">ExplicitVariableError.__setattr__()</span></code></a></li>
 <li><a class="reference internal" href="#fipy.terms.ExplicitVariableError.__str__"><code class="docutils literal notranslate"><span class="pre">ExplicitVariableError.__str__()</span></code></a></li>
+<li><a class="reference internal" href="#fipy.terms.ExplicitVariableError.add_note"><code class="docutils literal notranslate"><span class="pre">ExplicitVariableError.add_note()</span></code></a></li>
 <li><a class="reference internal" href="#fipy.terms.ExplicitVariableError.with_traceback"><code class="docutils literal notranslate"><span class="pre">ExplicitVariableError.with_traceback()</span></code></a></li>
 </ul>
 </li>
@@ -800,6 +843,7 @@ Version 3.1.3+1049.g7a10ced2
 <li><a class="reference internal" href="#fipy.terms.IncorrectSolutionVariable.__repr__"><code class="docutils literal notranslate"><span class="pre">IncorrectSolutionVariable.__repr__()</span></code></a></li>
 <li><a class="reference internal" href="#fipy.terms.IncorrectSolutionVariable.__setattr__"><code class="docutils literal notranslate"><span class="pre">IncorrectSolutionVariable.__setattr__()</span></code></a></li>
 <li><a class="reference internal" href="#fipy.terms.IncorrectSolutionVariable.__str__"><code class="docutils literal notranslate"><span class="pre">IncorrectSolutionVariable.__str__()</span></code></a></li>
+<li><a class="reference internal" href="#fipy.terms.IncorrectSolutionVariable.add_note"><code class="docutils literal notranslate"><span class="pre">IncorrectSolutionVariable.add_note()</span></code></a></li>
 <li><a class="reference internal" href="#fipy.terms.IncorrectSolutionVariable.with_traceback"><code class="docutils literal notranslate"><span class="pre">IncorrectSolutionVariable.with_traceback()</span></code></a></li>
 </ul>
 </li>
@@ -812,6 +856,7 @@ Version 3.1.3+1049.g7a10ced2
 <li><a class="reference internal" href="#fipy.terms.SolutionVariableNumberError.__repr__"><code class="docutils literal notranslate"><span class="pre">SolutionVariableNumberError.__repr__()</span></code></a></li>
 <li><a class="reference internal" href="#fipy.terms.SolutionVariableNumberError.__setattr__"><code class="docutils literal notranslate"><span class="pre">SolutionVariableNumberError.__setattr__()</span></code></a></li>
 <li><a class="reference internal" href="#fipy.terms.SolutionVariableNumberError.__str__"><code class="docutils literal notranslate"><span class="pre">SolutionVariableNumberError.__str__()</span></code></a></li>
+<li><a class="reference internal" href="#fipy.terms.SolutionVariableNumberError.add_note"><code class="docutils literal notranslate"><span class="pre">SolutionVariableNumberError.add_note()</span></code></a></li>
 <li><a class="reference internal" href="#fipy.terms.SolutionVariableNumberError.with_traceback"><code class="docutils literal notranslate"><span class="pre">SolutionVariableNumberError.with_traceback()</span></code></a></li>
 </ul>
 </li>
@@ -824,6 +869,7 @@ Version 3.1.3+1049.g7a10ced2
 <li><a class="reference internal" href="#fipy.terms.SolutionVariableRequiredError.__repr__"><code class="docutils literal notranslate"><span class="pre">SolutionVariableRequiredError.__repr__()</span></code></a></li>
 <li><a class="reference internal" href="#fipy.terms.SolutionVariableRequiredError.__setattr__"><code class="docutils literal notranslate"><span class="pre">SolutionVariableRequiredError.__setattr__()</span></code></a></li>
 <li><a class="reference internal" href="#fipy.terms.SolutionVariableRequiredError.__str__"><code class="docutils literal notranslate"><span class="pre">SolutionVariableRequiredError.__str__()</span></code></a></li>
+<li><a class="reference internal" href="#fipy.terms.SolutionVariableRequiredError.add_note"><code class="docutils literal notranslate"><span class="pre">SolutionVariableRequiredError.add_note()</span></code></a></li>
 <li><a class="reference internal" href="#fipy.terms.SolutionVariableRequiredError.with_traceback"><code class="docutils literal notranslate"><span class="pre">SolutionVariableRequiredError.with_traceback()</span></code></a></li>
 </ul>
 </li>
@@ -836,6 +882,7 @@ Version 3.1.3+1049.g7a10ced2
 <li><a class="reference internal" href="#fipy.terms.TermMultiplyError.__repr__"><code class="docutils literal notranslate"><span class="pre">TermMultiplyError.__repr__()</span></code></a></li>
 <li><a class="reference internal" href="#fipy.terms.TermMultiplyError.__setattr__"><code class="docutils literal notranslate"><span class="pre">TermMultiplyError.__setattr__()</span></code></a></li>
 <li><a class="reference internal" href="#fipy.terms.TermMultiplyError.__str__"><code class="docutils literal notranslate"><span class="pre">TermMultiplyError.__str__()</span></code></a></li>
+<li><a class="reference internal" href="#fipy.terms.TermMultiplyError.add_note"><code class="docutils literal notranslate"><span class="pre">TermMultiplyError.add_note()</span></code></a></li>
 <li><a class="reference internal" href="#fipy.terms.TermMultiplyError.with_traceback"><code class="docutils literal notranslate"><span class="pre">TermMultiplyError.with_traceback()</span></code></a></li>
 </ul>
 </li>
@@ -848,6 +895,7 @@ Version 3.1.3+1049.g7a10ced2
 <li><a class="reference internal" href="#fipy.terms.TransientTermError.__repr__"><code class="docutils literal notranslate"><span class="pre">TransientTermError.__repr__()</span></code></a></li>
 <li><a class="reference internal" href="#fipy.terms.TransientTermError.__setattr__"><code class="docutils literal notranslate"><span class="pre">TransientTermError.__setattr__()</span></code></a></li>
 <li><a class="reference internal" href="#fipy.terms.TransientTermError.__str__"><code class="docutils literal notranslate"><span class="pre">TransientTermError.__str__()</span></code></a></li>
+<li><a class="reference internal" href="#fipy.terms.TransientTermError.add_note"><code class="docutils literal notranslate"><span class="pre">TransientTermError.add_note()</span></code></a></li>
 <li><a class="reference internal" href="#fipy.terms.TransientTermError.with_traceback"><code class="docutils literal notranslate"><span class="pre">TransientTermError.with_traceback()</span></code></a></li>
 </ul>
 </li>
@@ -860,6 +908,7 @@ Version 3.1.3+1049.g7a10ced2
 <li><a class="reference internal" href="#fipy.terms.VectorCoeffError.__repr__"><code class="docutils literal notranslate"><span class="pre">VectorCoeffError.__repr__()</span></code></a></li>
 <li><a class="reference internal" href="#fipy.terms.VectorCoeffError.__setattr__"><code class="docutils literal notranslate"><span class="pre">VectorCoeffError.__setattr__()</span></code></a></li>
 <li><a class="reference internal" href="#fipy.terms.VectorCoeffError.__str__"><code class="docutils literal notranslate"><span class="pre">VectorCoeffError.__str__()</span></code></a></li>
+<li><a class="reference internal" href="#fipy.terms.VectorCoeffError.add_note"><code class="docutils literal notranslate"><span class="pre">VectorCoeffError.add_note()</span></code></a></li>
 <li><a class="reference internal" href="#fipy.terms.VectorCoeffError.with_traceback"><code class="docutils literal notranslate"><span class="pre">VectorCoeffError.with_traceback()</span></code></a></li>
 </ul>
 </li>
