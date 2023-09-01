@@ -33,9 +33,9 @@
     <![endif]-->
     <!--[if (gte IE 6)&(lte IE 8)]>
   <script type="text/javascript" src="https://www.nist.gov/sites/all/themes/nist_style/js/selectivizr-min.js"></script>
-  <![endif]--><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+  <![endif]--><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>fipy.meshes.factoryMeshes &#8212; FiPy 3.1.3+1046.gd5515e19 documentation</title>
+    <title>fipy.meshes.factoryMeshes &#8212; FiPy 3.1.3+1049.g7a10ced2 documentation</title>
     <link rel="stylesheet" href="../_static/ntd2d.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
@@ -51,7 +51,7 @@
     <link rel="shortcut icon" href="../_static/favicon.ico"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="top" title="FiPy 3.1.3+1046.gd5515e19 documentation" href="../contents.html" />
+    <link rel="top" title="FiPy 3.1.3+1049.g7a10ced2 documentation" href="../contents.html" />
     <link rel="up" title="fipy.meshes" href="fipy.meshes.html" />
     <link rel="next" title="fipy.meshes.gmshMesh" href="fipy.meshes.gmshMesh.html" />
     <link rel="prev" title="fipy.meshes.cylindricalUniformGrid2D" href="fipy.meshes.cylindricalUniformGrid2D.html" />
@@ -120,6 +120,10 @@
 <span id="fipy-meshes-factorymeshes"></span><h1>fipy.meshes.factoryMeshes<a class="headerlink" href="#module-fipy.meshes.factoryMeshes" title="Permalink to this heading">¶</a></h1>
 <p class="rubric">Functions</p>
 <table class="autosummary longtable docutils align-default">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
 <tbody>
 <tr class="row-odd"><td><p><a class="reference internal" href="#fipy.meshes.factoryMeshes.CylindricalGrid1D" title="fipy.meshes.factoryMeshes.CylindricalGrid1D"><code class="xref py py-obj docutils literal notranslate"><span class="pre">CylindricalGrid1D</span></code></a>([dr, nr, Lr, dx, nx, Lx, ...])</p></td>
 <td><p>Create a 2D cylindrical mesh</p></td>
@@ -153,7 +157,7 @@ If <cite>Lr</cite> is specified the length of the domain is always <cite>Lr</cit
 of <cite>dr</cite>, unless <cite>dr</cite> is a list of spacings, in which case <cite>Lr</cite> will be
 the sum of <cite>dr</cite>.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>dr</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.11)"><em>float</em></a>) – Grid spacing in the radial direction. Alternative: <cite>dx</cite>.</p></li>
 <li><p><strong>nr</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.11)"><em>int</em></a>) – Number of cells in the radial direction. Alternative: <cite>nx</cite>.</p></li>
@@ -181,7 +185,7 @@ If <cite>Lr</cite> is specified the length of the domain is always <cite>Lr</cit
 of <cite>dr</cite>, unless <cite>dr</cite> is a list of spacings, in which case <cite>Lr</cite> will be
 the sum of <cite>dr</cite>.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>dr</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.11)"><em>float</em></a>) – Grid spacing in the radial direction. Alternative: <cite>dx</cite>.</p></li>
 <li><p><strong>dz</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.11)"><em>float</em></a>) – grid spacing in the vertical direction. Alternative: <cite>dy</cite>.</p></li>
@@ -211,7 +215,7 @@ specified the length of the domain is always <cite>Lx</cite> regardless of <cite
 unless <cite>dx</cite> is a list of spacings, in which case <cite>Lx</cite> will be the sum
 of <cite>dx</cite> and <cite>nx</cite> will be the count of <cite>dx</cite>.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>dx</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.11)"><em>float</em></a>) – Grid spacing in the horizontal direction</p></li>
 <li><p><strong>nx</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.11)"><em>int</em></a>) – Number of cells in the horizontal direction</p></li>
@@ -242,7 +246,7 @@ will be the sum of <cite>d{x,y}</cite> and <cite>n{x,y}</cite> will be the count
 </pre></div>
 </div>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>dx</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.11)"><em>float</em></a>) – Grid spacing in the horizontal direction</p></li>
 <li><p><strong>dy</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.11)"><em>float</em></a>) – Grid spacing in the vertical direction</p></li>
@@ -273,7 +277,7 @@ of <cite>d{x,y,z}</cite>, unless <cite>d{x,y,z}</cite> is a list of spacings, in
 <cite>L{x,y,z}</cite> will be the sum of <cite>d{x,y,z}</cite> and <cite>n{x,y,z}</cite> will be the
 count of <cite>d{x,y,z}</cite>.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>dx</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.11)"><em>float</em></a>) – Grid spacing in the horizontal direction</p></li>
 <li><p><strong>dy</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.11)"><em>float</em></a>) – Grid spacing in the vertical direction</p></li>
@@ -306,7 +310,7 @@ If <cite>Lr</cite> is specified the length of the domain is always <cite>Lr</cit
 of <cite>dr</cite>, unless <cite>dr</cite> is a list of spacings, in which case <cite>Lr</cite> will be
 the sum of <cite>dr</cite>.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>dr</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.11)"><em>float</em></a>) – Grid spacing in the radial direction. Alternative: <cite>dx</cite>.</p></li>
 <li><p><strong>nr</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.11)"><em>int</em></a>) – Number of cells in the radial direction. Alternative: <cite>nx</cite>.</p></li>
@@ -326,7 +330,7 @@ purposes.  (default: <a class="reference internal" href="fipy.tools.html#fipy.to
 
 
                 <div class='last-updated'>
-                Last updated on Aug 10, 2023.
+                Last updated on Sep 01, 2023.
                 Created using <a href="http://sphinx-doc.org/">Sphinx</a> 5.3.0.
                 </div>
               </div>
@@ -339,7 +343,7 @@ purposes.  (default: <a class="reference internal" href="fipy.tools.html#fipy.to
               <img class="logo" src="../_static/logo.png" alt="Logo"/>
             </a></p>
 <strong>FiPy: A Finite Volume PDE Solver Using Python</strong><br />
-Version 3.1.3+1046.gd5515e19
+Version 3.1.3+1049.g7a10ced2
 
   <div class="sphinxsidebarsection">
   <h3><a href="../contents.html">Table Of Contents</a></h3>

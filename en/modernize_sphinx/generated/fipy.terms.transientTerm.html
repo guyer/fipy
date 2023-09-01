@@ -33,9 +33,9 @@
     <![endif]-->
     <!--[if (gte IE 6)&(lte IE 8)]>
   <script type="text/javascript" src="https://www.nist.gov/sites/all/themes/nist_style/js/selectivizr-min.js"></script>
-  <![endif]--><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+  <![endif]--><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>fipy.terms.transientTerm &#8212; FiPy 3.1.3+1046.gd5515e19 documentation</title>
+    <title>fipy.terms.transientTerm &#8212; FiPy 3.1.3+1049.g7a10ced2 documentation</title>
     <link rel="stylesheet" href="../_static/ntd2d.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
@@ -52,7 +52,7 @@
     <link rel="shortcut icon" href="../_static/favicon.ico"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="top" title="FiPy 3.1.3+1046.gd5515e19 documentation" href="../contents.html" />
+    <link rel="top" title="FiPy 3.1.3+1049.g7a10ced2 documentation" href="../contents.html" />
     <link rel="up" title="fipy.terms" href="fipy.terms.html" />
     <link rel="next" title="fipy.terms.unaryTerm" href="fipy.terms.unaryTerm.html" />
     <link rel="prev" title="fipy.terms.test" href="fipy.terms.test.html" />
@@ -121,6 +121,10 @@
 <span id="fipy-terms-transientterm"></span><h1>fipy.terms.transientTerm<a class="headerlink" href="#module-fipy.terms.transientTerm" title="Permalink to this heading">¶</a></h1>
 <p class="rubric">Classes</p>
 <table class="autosummary longtable docutils align-default">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
 <tbody>
 <tr class="row-odd"><td><p><a class="reference internal" href="#fipy.terms.transientTerm.TransientTerm" title="fipy.terms.transientTerm.TransientTerm"><code class="xref py py-obj docutils literal notranslate"><span class="pre">TransientTerm</span></code></a>([coeff, var])</p></td>
 <td><p>The <cite>TransientTerm</cite> represents</p></td>
@@ -130,7 +134,8 @@
 <dl class="py class">
 <dt class="sig sig-object py" id="fipy.terms.transientTerm.TransientTerm">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">fipy.terms.transientTerm.</span></span><span class="sig-name descname"><span class="pre">TransientTerm</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">coeff</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">var</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#fipy.terms.transientTerm.TransientTerm" title="Permalink to this definition">¶</a></dt>
-<dd><p>The <cite>TransientTerm</cite> represents</p>
+<dd><p>Bases: <a class="reference internal" href="fipy.terms.cellTerm.html#fipy.terms.cellTerm.CellTerm" title="fipy.terms.cellTerm.CellTerm"><code class="xref py py-class docutils literal notranslate"><span class="pre">CellTerm</span></code></a></p>
+<p>The <cite>TransientTerm</cite> represents</p>
 <div class="math notranslate nohighlight">
 \[\int_V \frac{\partial (\rho \phi)}{\partial t} dV \simeq
 \frac{(\rho_{P} \phi_{P} - \rho_{P}^\text{old} \phi_P^\text{old}) V_P}{\Delta t}\]</div>
@@ -183,7 +188,7 @@ relaxation take effect.</p>
 </div>
 <p>Create a <cite>Term</cite>.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><p><strong>coeff</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.11)"><em>float</em></a><em> or </em><a class="reference internal" href="fipy.variables.cellVariable.html#fipy.variables.cellVariable.CellVariable" title="fipy.variables.cellVariable.CellVariable"><em>CellVariable</em></a><em> or </em><a class="reference internal" href="fipy.variables.faceVariable.html#fipy.variables.faceVariable.FaceVariable" title="fipy.variables.faceVariable.FaceVariable"><em>FaceVariable</em></a>) – Coefficient for the term.  <cite>FaceVariable</cite> objects are only
 acceptable for diffusion or convection terms.</p>
 </dd>
@@ -292,7 +297,7 @@ applying under-relaxation.</p>
 </pre></div>
 </div>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>var</strong> (<a class="reference internal" href="fipy.variables.cellVariable.html#fipy.variables.cellVariable.CellVariable" title="fipy.variables.cellVariable.CellVariable"><em>CellVariable</em></a>) – <cite>Variable</cite> to be solved for.  Provides the initial condition,
 the old value and holds the solution on completion.</p></li>
@@ -307,10 +312,10 @@ under-relaxation</p></li>
 customize the residual calculation.</p></li>
 </ul>
 </dd>
-<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dt class="field-even">Returns</dt>
 <dd class="field-even"><p><strong>error</strong> – The residual vector <span class="math notranslate nohighlight">\(\vec{e}=\mathsf{L}\vec{x}_\text{old} - \vec{b}\)</span></p>
 </dd>
-<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dt class="field-odd">Return type</dt>
 <dd class="field-odd"><p><a class="reference internal" href="fipy.variables.cellVariable.html#fipy.variables.cellVariable.CellVariable" title="fipy.variables.cellVariable.CellVariable"><em>CellVariable</em></a></p>
 </dd>
 </dl>
@@ -331,7 +336,7 @@ applying under-relaxation.</p>
 </pre></div>
 </div>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>var</strong> (<a class="reference internal" href="fipy.variables.cellVariable.html#fipy.variables.cellVariable.CellVariable" title="fipy.variables.cellVariable.CellVariable"><em>CellVariable</em></a>) – <cite>Variable</cite> to be solved for.  Provides the initial condition,
 the old value and holds the solution on completion.</p></li>
@@ -346,10 +351,10 @@ under-relaxation</p></li>
 customize the residual calculation.</p></li>
 </ul>
 </dd>
-<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dt class="field-even">Returns</dt>
 <dd class="field-even"><p><strong>residual</strong> – The residual vector <span class="math notranslate nohighlight">\(\vec{r}=\mathsf{L}\vec{x} - \vec{b}\)</span></p>
 </dd>
-<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dt class="field-odd">Return type</dt>
 <dd class="field-odd"><p><a class="reference internal" href="fipy.variables.cellVariable.html#fipy.variables.cellVariable.CellVariable" title="fipy.variables.cellVariable.CellVariable"><em>CellVariable</em></a></p>
 </dd>
 </dl>
@@ -370,7 +375,7 @@ customize the residual calculation.</p></li>
 <p>This method also recalculates and returns the residual as well as
 applying under-relaxation.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>var</strong> (<a class="reference internal" href="fipy.variables.cellVariable.html#fipy.variables.cellVariable.CellVariable" title="fipy.variables.cellVariable.CellVariable"><em>CellVariable</em></a>) – <cite>Variable</cite> to be solved for.  Provides the initial condition,
 the old value and holds the solution on completion.</p></li>
@@ -385,7 +390,7 @@ under-relaxation</p></li>
 customize the residual calculation.</p></li>
 </ul>
 </dd>
-<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dt class="field-even">Returns</dt>
 <dd class="field-even"><p><ul class="simple">
 <li><p><strong>residual</strong> (<em>~fipy.variables.cellVariable.CellVariable</em>) – The residual vector <span class="math notranslate nohighlight">\(\vec{r}=\mathsf{L}\vec{x} - \vec{b}\)</span></p></li>
 <li><p><strong>norm</strong> (<em>float</em>) – The L2 norm of <cite>residual</cite>, <span class="math notranslate nohighlight">\(\|\vec{r}\|_2\)</span></p></li>
@@ -402,7 +407,7 @@ customize the residual calculation.</p></li>
 does not return the residual. It should be used when the
 residual is not required.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>var</strong> (<a class="reference internal" href="fipy.variables.cellVariable.html#fipy.variables.cellVariable.CellVariable" title="fipy.variables.cellVariable.CellVariable"><em>CellVariable</em></a>) – <cite>Variable</cite> to be solved for.  Provides the initial condition,
 the old value and holds the solution on completion.</p></li>
@@ -423,7 +428,7 @@ selected.</p></li>
 also recalculates and returns the residual as well as applying
 under-relaxation.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>var</strong> (<a class="reference internal" href="fipy.variables.cellVariable.html#fipy.variables.cellVariable.CellVariable" title="fipy.variables.cellVariable.CellVariable"><em>CellVariable</em></a>) – <cite>Variable</cite> to be solved for.  Provides the initial condition,
 the old value and holds the solution on completion.</p></li>
@@ -445,10 +450,10 @@ customize the residual calculation.</p></li>
 <cite>Term</cite></p></li>
 </ul>
 </dd>
-<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dt class="field-even">Returns</dt>
 <dd class="field-even"><p><strong>residual</strong> – The residual vector <span class="math notranslate nohighlight">\(\vec{r}=\mathsf{L}\vec{x} - \vec{b}\)</span></p>
 </dd>
-<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dt class="field-odd">Return type</dt>
 <dd class="field-odd"><p><a class="reference internal" href="fipy.variables.cellVariable.html#fipy.variables.cellVariable.CellVariable" title="fipy.variables.cellVariable.CellVariable"><em>CellVariable</em></a></p>
 </dd>
 </dl>
@@ -460,7 +465,7 @@ customize the residual calculation.</p></li>
 
 
                 <div class='last-updated'>
-                Last updated on Aug 10, 2023.
+                Last updated on Sep 01, 2023.
                 Created using <a href="http://sphinx-doc.org/">Sphinx</a> 5.3.0.
                 </div>
               </div>
@@ -473,7 +478,7 @@ customize the residual calculation.</p></li>
               <img class="logo" src="../_static/logo.png" alt="Logo"/>
             </a></p>
 <strong>FiPy: A Finite Volume PDE Solver Using Python</strong><br />
-Version 3.1.3+1046.gd5515e19
+Version 3.1.3+1049.g7a10ced2
 
   <div class="sphinxsidebarsection">
   <h3><a href="../contents.html">Table Of Contents</a></h3>
