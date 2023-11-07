@@ -203,37 +203,47 @@ Convergence
 
 Different solver suites take different approaches to testing convergence.
 We endeavor to harmonize this behavior by allowing the strings in the
-"FiPy" column to be passed as the ``criterion=`` argument when
-instantiating a :class:`~fipy.solvers.solver.Solver`.
+"criterion" column to be passed as an argument when instantiating a
+:class:`~fipy.solvers.solver.Solver`.  Convergence is detected if
+``residual < tolerance * scale``.
 
-.. note:: PyAMG_ is a set of preconditioners applied on top of SciPy_, so
-   is not explicitly included in the following tables.
+.. raw:: latex
+
+    \begin{landscape}
 
 .. csv-table:: Residual Criteria
    :file: _static/residuals.csv
    :widths: auto
    :header-rows: 1
-   :stub-columns: 2
+   :stub-columns: 1
+   :class: wideshow longtable
 
-Convergence is detected if ``residual < tolerance * scale``.
+.. raw:: latex
+
+    \end{landscape}
+
+.. note:: PyAMG_ is a set of preconditioners applied on top of SciPy_, so
+   is not explicitly included in these tables.
 
 ``default``
 ===========
 
-The behavior of ``criterion="default"`` depends on the solver suite and,
-sometimes, on the specific solver.  Where feasible, this behavior is
-specified in the table.
+The setting ``criterion="default"`` is equivalent to what the particular
+suite and solver does if not specifically configured.  The ``default`` row
+of the table is a best effort at documenting what will happen.
 
-- PySparse_ has two different groups of solvers,
-  with different defaults.
-- PETSc_ accepts ``KSP_NORM_DEFAULT`` in order to
-  "use the default for the current ``KSPType``".  Discerning the actual
-  behavior would require burning the code in a bowl of chicken entrails.
-  (It is reasonable to assume |KSP_NORM_PRECONDITIONED|_ for
-  left-preconditioned solvers and |KSP_NORM_UNPRECONDITIONED|_ otherwise;
-  even the PETSc_ documentation says that |KSP_NORM_NATURAL|_ is `"weird"
-  <https://petsc.org/main/manualpages/KSP/KSPCGS/#developer-note>`_).
-- LU solvers default to ``"initial"``.
+.. note::
+
+    - All LU solvers default to ``"initial"``.
+    - PySparse_ has two different groups of solvers,
+      with different defaults.
+    - PETSc_ accepts |KSP_NORM_DEFAULT|_ in order to
+      "use the default for the current ``KSPType``".  Discerning the actual
+      behavior would require burning the code in a bowl of chicken entrails.
+      (It is reasonable to assume |KSP_NORM_PRECONDITIONED|_ for
+      left-preconditioned solvers and |KSP_NORM_UNPRECONDITIONED|_ otherwise;
+      even the PETSc_ documentation says that |KSP_NORM_NATURAL|_ is `"weird"
+      <https://petsc.org/main/manualpages/KSP/KSPCGS/#developer-note>`_).
 
 ``absolute_tolerance``
 ======================
@@ -260,11 +270,40 @@ they succed or fail.  This information is captured as a
 :meth:`~fipy.terms.term.Term.solve` or
 :meth:`~fipy.terms.term.Term.sweep`.
 
+.. raw:: latex
+
+    \begin{landscape}
+
+.. tabularcolumns:: \Y{.25}\Y{.10}\Y{.22}\Y{.16}\Y{.09}\Y{.06}\Y{.12}
+
 .. csv-table:: Convergence Status Codes
    :file: _static/solver_convergence.csv
    :widths: auto
    :header-rows: 1
    :stub-columns: 1
+   :class: wideshow longtable
+
+.. raw:: latex
+
+    \end{landscape}
+
+
+.. raw:: latex
+
+    \begin{landscape}
+
+.. tabularcolumns:: \Y{.25}\Y{.10}\Y{.22}\Y{.16}\Y{.09}\Y{.06}\Y{.12}
+
+.. csv-table:: Divergence Status Codes
+   :file: _static/solver_divergence.csv
+   :widths: auto
+   :header-rows: 1
+   :stub-columns: 1
+   :class: wideshow longtable
+
+.. raw:: latex
+
+    \end{landscape}
 
 .. |KSP_NORM_UNPRECONDITIONED|  replace:: :literal:`KSP_NORM_UNPRECONDITIONED`
 .. _KSP_NORM_UNPRECONDITIONED:  https://petsc.org/main/docs/manualpages/KSP/KSP_NORM_UNPRECONDITIONED/
@@ -272,6 +311,8 @@ they succed or fail.  This information is captured as a
 .. _KSP_NORM_PRECONDITIONED:  https://petsc.org/main/docs/manualpages/KSP/KSP_NORM_PRECONDITIONED/
 .. |KSP_NORM_NATURAL|  replace:: :literal:`KSP_NORM_NATURAL`
 .. _KSP_NORM_NATURAL:  https://petsc.org/main/docs/manualpages/KSP/KSP_NORM_NATURAL/
+.. |KSP_NORM_DEFAULT|  replace:: :literal:`KSP_NORM_DEFAULT`
+.. _KSP_NORM_DEFAULT:  https://petsc.org/main/manualpages/KSP/KSPNormType/
 
 .. [#KSP_Convergence_Tests] https://petsc.org/release/docs/manual/ksp/#sec-convergencetests
 
@@ -286,7 +327,8 @@ they succed or fail.  This information is captured as a
    For AztecOO Version 3.6 in Trilinos Release 8.0,
    https://trilinos.github.io/pdfs/AztecOOUserGuide.pdf
 
-.. [#FiPy_Convergence_Test] Implemented by :term:`FiPy`
+.. [#FiPy_Convergence_Test] Implemented by :term:`FiPy` using intrinsic
+   solver capabilities.
 
 .. |KSP_CONVERGED_ITS|             replace:: :literal:`KSP_CONVERGED_ITS`
 .. _KSP_CONVERGED_ITS:             https://petsc.org/main/docs/manualpages/KSP/KSP_CONVERGED_ITS/

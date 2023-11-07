@@ -35,19 +35,21 @@
   <script type="text/javascript" src="https://www.nist.gov/sites/all/themes/nist_style/js/selectivizr-min.js"></script>
   <![endif]--><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>fipy.solvers.convergence &#8212; FiPy 3.1.3+993.gd8a569e7 documentation</title>
+    <title>fipy.solvers.convergence &#8212; FiPy 3.1.3+1013.g86cb0e44 documentation</title>
     <link rel="stylesheet" href="../_static/ntd2d.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=fa44fd50" />
     <link rel="stylesheet" type="text/css" href="../_static/ntd2d.css?v=de7af573" />
     <link rel="stylesheet" type="text/css" href="../_static/plot_directive.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/widetable.css?v=32b6a719" />
     <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
-    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js?v=fda307cf"></script>
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js?v=11dd2392"></script>
     <script src="../_static/doctools.js?v=888ff710"></script>
     <script src="../_static/sphinx_highlight.js?v=4825356b"></script>
+    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="top" title="FiPy 3.1.3+993.gd8a569e7 documentation" href="../contents.html" />
+    <link rel="top" title="FiPy 3.1.3+1013.g86cb0e44 documentation" href="../contents.html" />
     <link rel="up" title="fipy.solvers" href="fipy.solvers.html" />
     <link rel="next" title="fipy.solvers.petsc" href="fipy.solvers.petsc.html" />
     <link rel="prev" title="fipy.solvers" href="fipy.solvers.html" />
@@ -119,10 +121,10 @@
 <table class="autosummary longtable docutils align-default">
 <tbody>
 <tr class="row-odd"><td><p><a class="reference internal" href="#fipy.solvers.convergence.AbsoluteToleranceConvergence" title="fipy.solvers.convergence.AbsoluteToleranceConvergence"><code class="xref py py-obj docutils literal notranslate"><span class="pre">AbsoluteToleranceConvergence</span></code></a>(solver, ...[, ...])</p></td>
-<td><p>Convergence by satisifying absolute tolerance.</p></td>
+<td><p>Absolute tolerance satisfied.</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#fipy.solvers.convergence.BreakdownDivergence" title="fipy.solvers.convergence.BreakdownDivergence"><code class="xref py py-obj docutils literal notranslate"><span class="pre">BreakdownDivergence</span></code></a>(solver, iterations, ...)</p></td>
-<td><p>Divergence because method broke down.</p></td>
+<td><p>Method broke down.</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="#fipy.solvers.convergence.Convergence" title="fipy.solvers.convergence.Convergence"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Convergence</span></code></a>(solver, iterations, residual, ...)</p></td>
 <td><p>Information about why a solver converged.</p></td>
@@ -133,23 +135,47 @@
 <tr class="row-odd"><td><p><a class="reference internal" href="#fipy.solvers.convergence.Divergence" title="fipy.solvers.convergence.Divergence"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Divergence</span></code></a>(solver, iterations, residual, ...)</p></td>
 <td><p>Information about why a solver diverged.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#fipy.solvers.convergence.IllConditionedDivergence" title="fipy.solvers.convergence.IllConditionedDivergence"><code class="xref py py-obj docutils literal notranslate"><span class="pre">IllConditionedDivergence</span></code></a>(solver, iterations, ...)</p></td>
-<td><p>Divergence because matrix was ill-conditioned.</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#fipy.solvers.convergence.HappyBreakdownConvergence" title="fipy.solvers.convergence.HappyBreakdownConvergence"><code class="xref py py-obj docutils literal notranslate"><span class="pre">HappyBreakdownConvergence</span></code></a>(solver, ...[, ...])</p></td>
+<td><p>&quot;Exact&quot; solution found and more iterations will just make things worse.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#fipy.solvers.convergence.IllConditionedPreconditionerDivergence" title="fipy.solvers.convergence.IllConditionedPreconditionerDivergence"><code class="xref py py-obj docutils literal notranslate"><span class="pre">IllConditionedPreconditionerDivergence</span></code></a>(...)</p></td>
-<td><p>Divergence because preconditioner is ill-conditioned.</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#fipy.solvers.convergence.IllConditionedDivergence" title="fipy.solvers.convergence.IllConditionedDivergence"><code class="xref py py-obj docutils literal notranslate"><span class="pre">IllConditionedDivergence</span></code></a>(solver, iterations, ...)</p></td>
+<td><p>Matrix was ill-conditioned.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#fipy.solvers.convergence.IterationDivergence" title="fipy.solvers.convergence.IterationDivergence"><code class="xref py py-obj docutils literal notranslate"><span class="pre">IterationDivergence</span></code></a>(solver, iterations, ...)</p></td>
-<td><p>Divergence by exceeding maximum iterations.</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#fipy.solvers.convergence.IllConditionedPreconditionerDivergence" title="fipy.solvers.convergence.IllConditionedPreconditionerDivergence"><code class="xref py py-obj docutils literal notranslate"><span class="pre">IllConditionedPreconditionerDivergence</span></code></a>(...)</p></td>
+<td><p>Preconditioner is ill-conditioned.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#fipy.solvers.convergence.OutOfRangeDivergence" title="fipy.solvers.convergence.OutOfRangeDivergence"><code class="xref py py-obj docutils literal notranslate"><span class="pre">OutOfRangeDivergence</span></code></a>(solver, iterations, ...)</p></td>
-<td><p>Divergence because a value became too small, too large, or invalid.</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#fipy.solvers.convergence.IteratingConvergence" title="fipy.solvers.convergence.IteratingConvergence"><code class="xref py py-obj docutils literal notranslate"><span class="pre">IteratingConvergence</span></code></a>(solver, iterations, ...)</p></td>
+<td><p>Solve still in progress.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#fipy.solvers.convergence.PreconditioningDivergence" title="fipy.solvers.convergence.PreconditioningDivergence"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PreconditioningDivergence</span></code></a>(solver, ...[, ...])</p></td>
-<td><p>Divergence because of a problem with the preconditioner.</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#fipy.solvers.convergence.IterationConvergence" title="fipy.solvers.convergence.IterationConvergence"><code class="xref py py-obj docutils literal notranslate"><span class="pre">IterationConvergence</span></code></a>(solver, iterations, ...)</p></td>
+<td><p>Requested iterations complete (and no residual calculated).</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#fipy.solvers.convergence.IterationDivergence" title="fipy.solvers.convergence.IterationDivergence"><code class="xref py py-obj docutils literal notranslate"><span class="pre">IterationDivergence</span></code></a>(solver, iterations, ...)</p></td>
+<td><p>Exceeded maximum iterations.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#fipy.solvers.convergence.LossOfAccuracyConvergence" title="fipy.solvers.convergence.LossOfAccuracyConvergence"><code class="xref py py-obj docutils literal notranslate"><span class="pre">LossOfAccuracyConvergence</span></code></a>(solver, ...[, ...])</p></td>
+<td><p>Numerical loss of precision occurred.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#fipy.solvers.convergence.NullDivergence" title="fipy.solvers.convergence.NullDivergence"><code class="xref py py-obj docutils literal notranslate"><span class="pre">NullDivergence</span></code></a>(solver, iterations, residual, ...)</p></td>
+<td><p>Breakdown when solving the Hessenberg system within GMRES.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#fipy.solvers.convergence.OutOfRangeDivergence" title="fipy.solvers.convergence.OutOfRangeDivergence"><code class="xref py py-obj docutils literal notranslate"><span class="pre">OutOfRangeDivergence</span></code></a>(solver, iterations, ...)</p></td>
+<td><p>A value became too small, too large, or invalid.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#fipy.solvers.convergence.PreconditioningDivergence" title="fipy.solvers.convergence.PreconditioningDivergence"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PreconditioningDivergence</span></code></a>(solver, ...[, ...])</p></td>
+<td><p>A problem with the preconditioner.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#fipy.solvers.convergence.RHSZeroConvergence" title="fipy.solvers.convergence.RHSZeroConvergence"><code class="xref py py-obj docutils literal notranslate"><span class="pre">RHSZeroConvergence</span></code></a>(solver, iterations, ...)</p></td>
+<td><p><span class="math notranslate nohighlight">\(\vec{b} = 0\)</span>, so exact solution is <span class="math notranslate nohighlight">\(\vec{x} = 0\)</span>.</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="#fipy.solvers.convergence.RelativeToleranceConvergence" title="fipy.solvers.convergence.RelativeToleranceConvergence"><code class="xref py py-obj docutils literal notranslate"><span class="pre">RelativeToleranceConvergence</span></code></a>(solver, ...[, ...])</p></td>
-<td><p>Convergence by satisifying relative tolerance.</p></td>
+<td><p>Relative tolerance satisfied.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#fipy.solvers.convergence.StagnatedDivergence" title="fipy.solvers.convergence.StagnatedDivergence"><code class="xref py py-obj docutils literal notranslate"><span class="pre">StagnatedDivergence</span></code></a>(solver, iterations, ...)</p></td>
+<td><p>The method stagnated.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#fipy.solvers.convergence.ToleranceDivergence" title="fipy.solvers.convergence.ToleranceDivergence"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ToleranceDivergence</span></code></a>(solver, iterations, ...)</p></td>
+<td><p>Residual norm increased too much.</p></td>
 </tr>
 </tbody>
 </table>
@@ -157,7 +183,8 @@
 <dt class="sig sig-object py" id="fipy.solvers.convergence.AbsoluteToleranceConvergence">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">fipy.solvers.convergence.</span></span><span class="sig-name descname"><span class="pre">AbsoluteToleranceConvergence</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">solver</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">iterations</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">residual</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">criterion</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">actual_code</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#fipy.solvers.convergence.AbsoluteToleranceConvergence" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="#fipy.solvers.convergence.Convergence" title="fipy.solvers.convergence.Convergence"><code class="xref py py-class docutils literal notranslate"><span class="pre">Convergence</span></code></a></p>
-<p>Convergence by satisifying absolute tolerance.</p>
+<p>Absolute tolerance satisfied.</p>
+<p>residual &lt; atol * scale</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="fipy.solvers.convergence.AbsoluteToleranceConvergence.__str__">
 <span class="sig-name descname"><span class="pre">__str__</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#fipy.solvers.convergence.AbsoluteToleranceConvergence.__str__" title="Permalink to this definition">¶</a></dt>
@@ -170,7 +197,7 @@
 <dt class="sig sig-object py" id="fipy.solvers.convergence.BreakdownDivergence">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">fipy.solvers.convergence.</span></span><span class="sig-name descname"><span class="pre">BreakdownDivergence</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">solver</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">iterations</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">residual</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">criterion</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">actual_code</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#fipy.solvers.convergence.BreakdownDivergence" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="#fipy.solvers.convergence.Divergence" title="fipy.solvers.convergence.Divergence"><code class="xref py py-class docutils literal notranslate"><span class="pre">Divergence</span></code></a></p>
-<p>Divergence because method broke down.</p>
+<p>Method broke down.</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="fipy.solvers.convergence.BreakdownDivergence.__str__">
 <span class="sig-name descname"><span class="pre">__str__</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#fipy.solvers.convergence.BreakdownDivergence.__str__" title="Permalink to this definition">¶</a></dt>
@@ -197,6 +224,95 @@
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">fipy.solvers.convergence.</span></span><span class="sig-name descname"><span class="pre">ConvergenceBase</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">solver</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">iterations</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">residual</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">criterion</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">actual_code</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#fipy.solvers.convergence.ConvergenceBase" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.12)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
 <p>Information about whether and why a solver converged.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="fipy.solvers.convergence.ConvergenceBase.solver">
+<span class="sig-name descname"><span class="pre">solver</span></span><a class="headerlink" href="#fipy.solvers.convergence.ConvergenceBase.solver" title="Permalink to this definition">¶</a></dt>
+<dd><p>The linear solver that was invoked.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="fipy.solvers.solver.html#fipy.solvers.solver.Solver" title="fipy.solvers.solver.Solver"><code class="xref py py-class docutils literal notranslate"><span class="pre">Solver</span></code></a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="fipy.solvers.convergence.ConvergenceBase.iterations">
+<span class="sig-name descname"><span class="pre">iterations</span></span><a class="headerlink" href="#fipy.solvers.convergence.ConvergenceBase.iterations" title="Permalink to this definition">¶</a></dt>
+<dd><p>The number of linear iterations the solver performed.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code></a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="fipy.solvers.convergence.ConvergenceBase.criterion">
+<span class="sig-name descname"><span class="pre">criterion</span></span><a class="headerlink" href="#fipy.solvers.convergence.ConvergenceBase.criterion" title="Permalink to this definition">¶</a></dt>
+<dd><p>The <a class="reference internal" href="../SOLVERS.html#convergence"><span class="std std-ref">Convergence</span></a> test used by the solver.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="fipy.solvers.convergence.ConvergenceBase.tolerance_scale">
+<span class="sig-name descname"><span class="pre">tolerance_scale</span></span><a class="headerlink" href="#fipy.solvers.convergence.ConvergenceBase.tolerance_scale" title="Permalink to this definition">¶</a></dt>
+<dd><p>The multiplier applied to the tolerance in order for this solver to
+satisfy <cite>criterion</cite>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.12)"><code class="xref py py-class docutils literal notranslate"><span class="pre">float</span></code></a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="fipy.solvers.convergence.ConvergenceBase.residual">
+<span class="sig-name descname"><span class="pre">residual</span></span><a class="headerlink" href="#fipy.solvers.convergence.ConvergenceBase.residual" title="Permalink to this definition">¶</a></dt>
+<dd><p>The unscaled norm of the residual achieved by the solver.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.12)"><code class="xref py py-class docutils literal notranslate"><span class="pre">float</span></code></a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="fipy.solvers.convergence.ConvergenceBase.status_code">
+<span class="sig-name descname"><span class="pre">status_code</span></span><a class="headerlink" href="#fipy.solvers.convergence.ConvergenceBase.status_code" title="Permalink to this definition">¶</a></dt>
+<dd><p>The canonical return value for this type of convergence.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code></a> or <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="fipy.solvers.convergence.ConvergenceBase.status_name">
+<span class="sig-name descname"><span class="pre">status_name</span></span><a class="headerlink" href="#fipy.solvers.convergence.ConvergenceBase.status_name" title="Permalink to this definition">¶</a></dt>
+<dd><p>The text representation of <cite>status_code</cite>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="fipy.solvers.convergence.ConvergenceBase.actual_code">
+<span class="sig-name descname"><span class="pre">actual_code</span></span><a class="headerlink" href="#fipy.solvers.convergence.ConvergenceBase.actual_code" title="Permalink to this definition">¶</a></dt>
+<dd><p>The status value actually returned by the solver.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code></a> or <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></a></p>
+</dd>
+</dl>
+</dd></dl>
+
 <dl class="py method">
 <dt class="sig sig-object py" id="fipy.solvers.convergence.ConvergenceBase.__str__">
 <span class="sig-name descname"><span class="pre">__str__</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#fipy.solvers.convergence.ConvergenceBase.__str__" title="Permalink to this definition">¶</a></dt>
@@ -219,10 +335,23 @@
 </dd></dl>
 
 <dl class="py class">
+<dt class="sig sig-object py" id="fipy.solvers.convergence.HappyBreakdownConvergence">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">fipy.solvers.convergence.</span></span><span class="sig-name descname"><span class="pre">HappyBreakdownConvergence</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">solver</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">iterations</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">residual</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">criterion</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">actual_code</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#fipy.solvers.convergence.HappyBreakdownConvergence" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#fipy.solvers.convergence.Convergence" title="fipy.solvers.convergence.Convergence"><code class="xref py py-class docutils literal notranslate"><span class="pre">Convergence</span></code></a></p>
+<p>“Exact” solution found and more iterations will just make things worse.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="fipy.solvers.convergence.HappyBreakdownConvergence.__str__">
+<span class="sig-name descname"><span class="pre">__str__</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#fipy.solvers.convergence.HappyBreakdownConvergence.__str__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return str(self).</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
 <dt class="sig sig-object py" id="fipy.solvers.convergence.IllConditionedDivergence">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">fipy.solvers.convergence.</span></span><span class="sig-name descname"><span class="pre">IllConditionedDivergence</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">solver</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">iterations</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">residual</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">criterion</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">actual_code</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#fipy.solvers.convergence.IllConditionedDivergence" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="#fipy.solvers.convergence.Divergence" title="fipy.solvers.convergence.Divergence"><code class="xref py py-class docutils literal notranslate"><span class="pre">Divergence</span></code></a></p>
-<p>Divergence because matrix was ill-conditioned.</p>
+<p>Matrix was ill-conditioned.</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="fipy.solvers.convergence.IllConditionedDivergence.__str__">
 <span class="sig-name descname"><span class="pre">__str__</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#fipy.solvers.convergence.IllConditionedDivergence.__str__" title="Permalink to this definition">¶</a></dt>
@@ -235,7 +364,7 @@
 <dt class="sig sig-object py" id="fipy.solvers.convergence.IllConditionedPreconditionerDivergence">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">fipy.solvers.convergence.</span></span><span class="sig-name descname"><span class="pre">IllConditionedPreconditionerDivergence</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">solver</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">iterations</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">residual</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">criterion</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">actual_code</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#fipy.solvers.convergence.IllConditionedPreconditionerDivergence" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="#fipy.solvers.convergence.PreconditioningDivergence" title="fipy.solvers.convergence.PreconditioningDivergence"><code class="xref py py-class docutils literal notranslate"><span class="pre">PreconditioningDivergence</span></code></a></p>
-<p>Divergence because preconditioner is ill-conditioned.</p>
+<p>Preconditioner is ill-conditioned.</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="fipy.solvers.convergence.IllConditionedPreconditionerDivergence.__str__">
 <span class="sig-name descname"><span class="pre">__str__</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#fipy.solvers.convergence.IllConditionedPreconditionerDivergence.__str__" title="Permalink to this definition">¶</a></dt>
@@ -245,10 +374,36 @@
 </dd></dl>
 
 <dl class="py class">
+<dt class="sig sig-object py" id="fipy.solvers.convergence.IteratingConvergence">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">fipy.solvers.convergence.</span></span><span class="sig-name descname"><span class="pre">IteratingConvergence</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">solver</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">iterations</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">residual</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">criterion</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">actual_code</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#fipy.solvers.convergence.IteratingConvergence" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#fipy.solvers.convergence.Convergence" title="fipy.solvers.convergence.Convergence"><code class="xref py py-class docutils literal notranslate"><span class="pre">Convergence</span></code></a></p>
+<p>Solve still in progress.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="fipy.solvers.convergence.IteratingConvergence.__str__">
+<span class="sig-name descname"><span class="pre">__str__</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#fipy.solvers.convergence.IteratingConvergence.__str__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return str(self).</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="fipy.solvers.convergence.IterationConvergence">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">fipy.solvers.convergence.</span></span><span class="sig-name descname"><span class="pre">IterationConvergence</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">solver</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">iterations</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">residual</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">criterion</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">actual_code</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#fipy.solvers.convergence.IterationConvergence" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#fipy.solvers.convergence.Convergence" title="fipy.solvers.convergence.Convergence"><code class="xref py py-class docutils literal notranslate"><span class="pre">Convergence</span></code></a></p>
+<p>Requested iterations complete (and no residual calculated).</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="fipy.solvers.convergence.IterationConvergence.__str__">
+<span class="sig-name descname"><span class="pre">__str__</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#fipy.solvers.convergence.IterationConvergence.__str__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return str(self).</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
 <dt class="sig sig-object py" id="fipy.solvers.convergence.IterationDivergence">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">fipy.solvers.convergence.</span></span><span class="sig-name descname"><span class="pre">IterationDivergence</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">solver</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">iterations</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">residual</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">criterion</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">actual_code</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#fipy.solvers.convergence.IterationDivergence" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="#fipy.solvers.convergence.Divergence" title="fipy.solvers.convergence.Divergence"><code class="xref py py-class docutils literal notranslate"><span class="pre">Divergence</span></code></a></p>
-<p>Divergence by exceeding maximum iterations.</p>
+<p>Exceeded maximum iterations.</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="fipy.solvers.convergence.IterationDivergence.__str__">
 <span class="sig-name descname"><span class="pre">__str__</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#fipy.solvers.convergence.IterationDivergence.__str__" title="Permalink to this definition">¶</a></dt>
@@ -258,10 +413,36 @@
 </dd></dl>
 
 <dl class="py class">
+<dt class="sig sig-object py" id="fipy.solvers.convergence.LossOfAccuracyConvergence">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">fipy.solvers.convergence.</span></span><span class="sig-name descname"><span class="pre">LossOfAccuracyConvergence</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">solver</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">iterations</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">residual</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">criterion</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">actual_code</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#fipy.solvers.convergence.LossOfAccuracyConvergence" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#fipy.solvers.convergence.Convergence" title="fipy.solvers.convergence.Convergence"><code class="xref py py-class docutils literal notranslate"><span class="pre">Convergence</span></code></a></p>
+<p>Numerical loss of precision occurred.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="fipy.solvers.convergence.LossOfAccuracyConvergence.__str__">
+<span class="sig-name descname"><span class="pre">__str__</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#fipy.solvers.convergence.LossOfAccuracyConvergence.__str__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return str(self).</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="fipy.solvers.convergence.NullDivergence">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">fipy.solvers.convergence.</span></span><span class="sig-name descname"><span class="pre">NullDivergence</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">solver</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">iterations</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">residual</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">criterion</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">actual_code</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#fipy.solvers.convergence.NullDivergence" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#fipy.solvers.convergence.Divergence" title="fipy.solvers.convergence.Divergence"><code class="xref py py-class docutils literal notranslate"><span class="pre">Divergence</span></code></a></p>
+<p>Breakdown when solving the Hessenberg system within GMRES.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="fipy.solvers.convergence.NullDivergence.__str__">
+<span class="sig-name descname"><span class="pre">__str__</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#fipy.solvers.convergence.NullDivergence.__str__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return str(self).</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
 <dt class="sig sig-object py" id="fipy.solvers.convergence.OutOfRangeDivergence">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">fipy.solvers.convergence.</span></span><span class="sig-name descname"><span class="pre">OutOfRangeDivergence</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">solver</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">iterations</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">residual</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">criterion</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">actual_code</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#fipy.solvers.convergence.OutOfRangeDivergence" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="#fipy.solvers.convergence.Divergence" title="fipy.solvers.convergence.Divergence"><code class="xref py py-class docutils literal notranslate"><span class="pre">Divergence</span></code></a></p>
-<p>Divergence because a value became too small, too large, or invalid.</p>
+<p>A value became too small, too large, or invalid.</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="fipy.solvers.convergence.OutOfRangeDivergence.__str__">
 <span class="sig-name descname"><span class="pre">__str__</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#fipy.solvers.convergence.OutOfRangeDivergence.__str__" title="Permalink to this definition">¶</a></dt>
@@ -274,7 +455,7 @@
 <dt class="sig sig-object py" id="fipy.solvers.convergence.PreconditioningDivergence">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">fipy.solvers.convergence.</span></span><span class="sig-name descname"><span class="pre">PreconditioningDivergence</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">solver</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">iterations</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">residual</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">criterion</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">actual_code</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#fipy.solvers.convergence.PreconditioningDivergence" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="#fipy.solvers.convergence.Divergence" title="fipy.solvers.convergence.Divergence"><code class="xref py py-class docutils literal notranslate"><span class="pre">Divergence</span></code></a></p>
-<p>Divergence because of a problem with the preconditioner.</p>
+<p>A problem with the preconditioner.</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="fipy.solvers.convergence.PreconditioningDivergence.__str__">
 <span class="sig-name descname"><span class="pre">__str__</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#fipy.solvers.convergence.PreconditioningDivergence.__str__" title="Permalink to this definition">¶</a></dt>
@@ -284,13 +465,53 @@
 </dd></dl>
 
 <dl class="py class">
+<dt class="sig sig-object py" id="fipy.solvers.convergence.RHSZeroConvergence">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">fipy.solvers.convergence.</span></span><span class="sig-name descname"><span class="pre">RHSZeroConvergence</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">solver</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">iterations</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">residual</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">criterion</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">actual_code</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#fipy.solvers.convergence.RHSZeroConvergence" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#fipy.solvers.convergence.Convergence" title="fipy.solvers.convergence.Convergence"><code class="xref py py-class docutils literal notranslate"><span class="pre">Convergence</span></code></a></p>
+<p><span class="math notranslate nohighlight">\(\vec{b} = 0\)</span>, so exact solution is <span class="math notranslate nohighlight">\(\vec{x} = 0\)</span>.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="fipy.solvers.convergence.RHSZeroConvergence.__str__">
+<span class="sig-name descname"><span class="pre">__str__</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#fipy.solvers.convergence.RHSZeroConvergence.__str__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return str(self).</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
 <dt class="sig sig-object py" id="fipy.solvers.convergence.RelativeToleranceConvergence">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">fipy.solvers.convergence.</span></span><span class="sig-name descname"><span class="pre">RelativeToleranceConvergence</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">solver</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">iterations</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">residual</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">criterion</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">actual_code</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#fipy.solvers.convergence.RelativeToleranceConvergence" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="#fipy.solvers.convergence.Convergence" title="fipy.solvers.convergence.Convergence"><code class="xref py py-class docutils literal notranslate"><span class="pre">Convergence</span></code></a></p>
-<p>Convergence by satisifying relative tolerance.</p>
+<p>Relative tolerance satisfied.</p>
+<p>residual &lt; rtol * scale</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="fipy.solvers.convergence.RelativeToleranceConvergence.__str__">
 <span class="sig-name descname"><span class="pre">__str__</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#fipy.solvers.convergence.RelativeToleranceConvergence.__str__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return str(self).</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="fipy.solvers.convergence.StagnatedDivergence">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">fipy.solvers.convergence.</span></span><span class="sig-name descname"><span class="pre">StagnatedDivergence</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">solver</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">iterations</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">residual</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">criterion</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">actual_code</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#fipy.solvers.convergence.StagnatedDivergence" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#fipy.solvers.convergence.Divergence" title="fipy.solvers.convergence.Divergence"><code class="xref py py-class docutils literal notranslate"><span class="pre">Divergence</span></code></a></p>
+<p>The method stagnated.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="fipy.solvers.convergence.StagnatedDivergence.__str__">
+<span class="sig-name descname"><span class="pre">__str__</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#fipy.solvers.convergence.StagnatedDivergence.__str__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return str(self).</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="fipy.solvers.convergence.ToleranceDivergence">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">fipy.solvers.convergence.</span></span><span class="sig-name descname"><span class="pre">ToleranceDivergence</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">solver</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">iterations</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">residual</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">criterion</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">actual_code</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#fipy.solvers.convergence.ToleranceDivergence" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#fipy.solvers.convergence.Divergence" title="fipy.solvers.convergence.Divergence"><code class="xref py py-class docutils literal notranslate"><span class="pre">Divergence</span></code></a></p>
+<p>Residual norm increased too much.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="fipy.solvers.convergence.ToleranceDivergence.__str__">
+<span class="sig-name descname"><span class="pre">__str__</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#fipy.solvers.convergence.ToleranceDivergence.__str__" title="Permalink to this definition">¶</a></dt>
 <dd><p>Return str(self).</p>
 </dd></dl>
 
@@ -300,7 +521,7 @@
 
 
                 <div class='last-updated'>
-                Last updated on Oct 27, 2023.
+                Last updated on Nov 07, 2023.
                 Created using <a href="http://sphinx-doc.org/">Sphinx</a> 7.1.2.
                 </div>
               </div>
@@ -310,7 +531,7 @@
         <div class="sphinxsidebarwrapper">
 
 <strong>FiPy: A Finite Volume PDE Solver Using Python</strong><br />
-Version 3.1.3+993.gd8a569e7
+Version 3.1.3+1013.g86cb0e44
 
   <div class="sphinxsidebarsection">
   <h3><a href="../contents.html">Table Of Contents</a></h3>
@@ -329,11 +550,23 @@ Version 3.1.3+993.gd8a569e7
 </ul>
 </li>
 <li><a class="reference internal" href="#fipy.solvers.convergence.ConvergenceBase"><code class="docutils literal notranslate"><span class="pre">ConvergenceBase</span></code></a><ul>
+<li><a class="reference internal" href="#fipy.solvers.convergence.ConvergenceBase.solver"><code class="docutils literal notranslate"><span class="pre">ConvergenceBase.solver</span></code></a></li>
+<li><a class="reference internal" href="#fipy.solvers.convergence.ConvergenceBase.iterations"><code class="docutils literal notranslate"><span class="pre">ConvergenceBase.iterations</span></code></a></li>
+<li><a class="reference internal" href="#fipy.solvers.convergence.ConvergenceBase.criterion"><code class="docutils literal notranslate"><span class="pre">ConvergenceBase.criterion</span></code></a></li>
+<li><a class="reference internal" href="#fipy.solvers.convergence.ConvergenceBase.tolerance_scale"><code class="docutils literal notranslate"><span class="pre">ConvergenceBase.tolerance_scale</span></code></a></li>
+<li><a class="reference internal" href="#fipy.solvers.convergence.ConvergenceBase.residual"><code class="docutils literal notranslate"><span class="pre">ConvergenceBase.residual</span></code></a></li>
+<li><a class="reference internal" href="#fipy.solvers.convergence.ConvergenceBase.status_code"><code class="docutils literal notranslate"><span class="pre">ConvergenceBase.status_code</span></code></a></li>
+<li><a class="reference internal" href="#fipy.solvers.convergence.ConvergenceBase.status_name"><code class="docutils literal notranslate"><span class="pre">ConvergenceBase.status_name</span></code></a></li>
+<li><a class="reference internal" href="#fipy.solvers.convergence.ConvergenceBase.actual_code"><code class="docutils literal notranslate"><span class="pre">ConvergenceBase.actual_code</span></code></a></li>
 <li><a class="reference internal" href="#fipy.solvers.convergence.ConvergenceBase.__str__"><code class="docutils literal notranslate"><span class="pre">ConvergenceBase.__str__()</span></code></a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#fipy.solvers.convergence.Divergence"><code class="docutils literal notranslate"><span class="pre">Divergence</span></code></a><ul>
 <li><a class="reference internal" href="#fipy.solvers.convergence.Divergence.__str__"><code class="docutils literal notranslate"><span class="pre">Divergence.__str__()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#fipy.solvers.convergence.HappyBreakdownConvergence"><code class="docutils literal notranslate"><span class="pre">HappyBreakdownConvergence</span></code></a><ul>
+<li><a class="reference internal" href="#fipy.solvers.convergence.HappyBreakdownConvergence.__str__"><code class="docutils literal notranslate"><span class="pre">HappyBreakdownConvergence.__str__()</span></code></a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#fipy.solvers.convergence.IllConditionedDivergence"><code class="docutils literal notranslate"><span class="pre">IllConditionedDivergence</span></code></a><ul>
@@ -344,8 +577,24 @@ Version 3.1.3+993.gd8a569e7
 <li><a class="reference internal" href="#fipy.solvers.convergence.IllConditionedPreconditionerDivergence.__str__"><code class="docutils literal notranslate"><span class="pre">IllConditionedPreconditionerDivergence.__str__()</span></code></a></li>
 </ul>
 </li>
+<li><a class="reference internal" href="#fipy.solvers.convergence.IteratingConvergence"><code class="docutils literal notranslate"><span class="pre">IteratingConvergence</span></code></a><ul>
+<li><a class="reference internal" href="#fipy.solvers.convergence.IteratingConvergence.__str__"><code class="docutils literal notranslate"><span class="pre">IteratingConvergence.__str__()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#fipy.solvers.convergence.IterationConvergence"><code class="docutils literal notranslate"><span class="pre">IterationConvergence</span></code></a><ul>
+<li><a class="reference internal" href="#fipy.solvers.convergence.IterationConvergence.__str__"><code class="docutils literal notranslate"><span class="pre">IterationConvergence.__str__()</span></code></a></li>
+</ul>
+</li>
 <li><a class="reference internal" href="#fipy.solvers.convergence.IterationDivergence"><code class="docutils literal notranslate"><span class="pre">IterationDivergence</span></code></a><ul>
 <li><a class="reference internal" href="#fipy.solvers.convergence.IterationDivergence.__str__"><code class="docutils literal notranslate"><span class="pre">IterationDivergence.__str__()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#fipy.solvers.convergence.LossOfAccuracyConvergence"><code class="docutils literal notranslate"><span class="pre">LossOfAccuracyConvergence</span></code></a><ul>
+<li><a class="reference internal" href="#fipy.solvers.convergence.LossOfAccuracyConvergence.__str__"><code class="docutils literal notranslate"><span class="pre">LossOfAccuracyConvergence.__str__()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#fipy.solvers.convergence.NullDivergence"><code class="docutils literal notranslate"><span class="pre">NullDivergence</span></code></a><ul>
+<li><a class="reference internal" href="#fipy.solvers.convergence.NullDivergence.__str__"><code class="docutils literal notranslate"><span class="pre">NullDivergence.__str__()</span></code></a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#fipy.solvers.convergence.OutOfRangeDivergence"><code class="docutils literal notranslate"><span class="pre">OutOfRangeDivergence</span></code></a><ul>
@@ -356,8 +605,20 @@ Version 3.1.3+993.gd8a569e7
 <li><a class="reference internal" href="#fipy.solvers.convergence.PreconditioningDivergence.__str__"><code class="docutils literal notranslate"><span class="pre">PreconditioningDivergence.__str__()</span></code></a></li>
 </ul>
 </li>
+<li><a class="reference internal" href="#fipy.solvers.convergence.RHSZeroConvergence"><code class="docutils literal notranslate"><span class="pre">RHSZeroConvergence</span></code></a><ul>
+<li><a class="reference internal" href="#fipy.solvers.convergence.RHSZeroConvergence.__str__"><code class="docutils literal notranslate"><span class="pre">RHSZeroConvergence.__str__()</span></code></a></li>
+</ul>
+</li>
 <li><a class="reference internal" href="#fipy.solvers.convergence.RelativeToleranceConvergence"><code class="docutils literal notranslate"><span class="pre">RelativeToleranceConvergence</span></code></a><ul>
 <li><a class="reference internal" href="#fipy.solvers.convergence.RelativeToleranceConvergence.__str__"><code class="docutils literal notranslate"><span class="pre">RelativeToleranceConvergence.__str__()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#fipy.solvers.convergence.StagnatedDivergence"><code class="docutils literal notranslate"><span class="pre">StagnatedDivergence</span></code></a><ul>
+<li><a class="reference internal" href="#fipy.solvers.convergence.StagnatedDivergence.__str__"><code class="docutils literal notranslate"><span class="pre">StagnatedDivergence.__str__()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#fipy.solvers.convergence.ToleranceDivergence"><code class="docutils literal notranslate"><span class="pre">ToleranceDivergence</span></code></a><ul>
+<li><a class="reference internal" href="#fipy.solvers.convergence.ToleranceDivergence.__str__"><code class="docutils literal notranslate"><span class="pre">ToleranceDivergence.__str__()</span></code></a></li>
 </ul>
 </li>
 </ul>

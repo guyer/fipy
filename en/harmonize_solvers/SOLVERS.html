@@ -35,20 +35,21 @@
   <script type="text/javascript" src="https://www.nist.gov/sites/all/themes/nist_style/js/selectivizr-min.js"></script>
   <![endif]--><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Solvers &#8212; FiPy 3.1.3+993.gd8a569e7 documentation</title>
+    <title>Solvers &#8212; FiPy 3.1.3+1013.g86cb0e44 documentation</title>
     <link rel="stylesheet" href="_static/ntd2d.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
     <link rel="stylesheet" type="text/css" href="_static/ntd2d.css?v=de7af573" />
     <link rel="stylesheet" type="text/css" href="_static/plot_directive.css" />
+    <link rel="stylesheet" type="text/css" href="_static/widetable.css?v=32b6a719" />
     <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
-    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js?v=fda307cf"></script>
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js?v=11dd2392"></script>
     <script src="_static/doctools.js?v=888ff710"></script>
     <script src="_static/sphinx_highlight.js?v=4825356b"></script>
     <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="top" title="FiPy 3.1.3+993.gd8a569e7 documentation" href="contents.html" />
+    <link rel="top" title="FiPy 3.1.3+1013.g86cb0e44 documentation" href="contents.html" />
     <link rel="up" title="Introduction" href="introduction.html" />
     <link rel="next" title="Viewers" href="VIEWERS.html" />
     <link rel="prev" title="Git practices" href="ADMINISTRATA.html" />
@@ -279,19 +280,15 @@ tolerance may help.</p>
 <span id="id8"></span><h2>Convergence<a class="headerlink" href="#convergence" title="Permalink to this heading">¶</a></h2>
 <p>Different solver suites take different approaches to testing convergence.
 We endeavor to harmonize this behavior by allowing the strings in the
-“FiPy” column to be passed as the <code class="docutils literal notranslate"><span class="pre">criterion=</span></code> argument when
-instantiating a <a class="reference internal" href="generated/fipy.solvers.solver.html#fipy.solvers.solver.Solver" title="fipy.solvers.solver.Solver"><code class="xref py py-class docutils literal notranslate"><span class="pre">Solver</span></code></a>.</p>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p><a class="reference internal" href="#pyamg">PyAMG</a> is a set of preconditioners applied on top of <a class="reference internal" href="#scipy">SciPy</a>, so
-is not explicitly included in the following tables.</p>
-</div>
-<table class="docutils align-default" id="id25">
+“criterion” column to be passed as an argument when instantiating a
+<a class="reference internal" href="generated/fipy.solvers.solver.html#fipy.solvers.solver.Solver" title="fipy.solvers.solver.Solver"><code class="xref py py-class docutils literal notranslate"><span class="pre">Solver</span></code></a>.  Convergence is detected if
+<code class="docutils literal notranslate"><span class="pre">residual</span> <span class="pre">&lt;</span> <span class="pre">tolerance</span> <span class="pre">*</span> <span class="pre">scale</span></code>.</p>
+<table class="wideshow longtable docutils align-default" id="id25">
 <caption><span class="caption-text">Residual Criteria</span><a class="headerlink" href="#id25" title="Permalink to this table">¶</a></caption>
 <thead>
-<tr class="row-odd"><th class="head stub"><p>residual</p></th>
-<th class="head stub"><p>scale</p></th>
-<th class="head"><p>FiPy</p></th>
+<tr class="row-odd"><th class="head stub"><p>criterion</p></th>
+<th class="head"><p>residual</p></th>
+<th class="head"><p>scale</p></th>
 <th class="head"><p><a class="reference internal" href="#petsc">PETSc</a> <a class="footnote-reference brackets" href="#ksp-convergence-tests" id="id9" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a></p></th>
 <th class="head"><p><a class="reference internal" href="#pyamgx">pyamgx</a> <a class="footnote-reference brackets" href="#amgx-convergence" id="id10" role="doc-noteref"><span class="fn-bracket">[</span>2<span class="fn-bracket">]</span></a></p></th>
 <th class="head"><p><a class="reference internal" href="#pysparse">PySparse</a></p></th>
@@ -300,88 +297,104 @@ is not explicitly included in the following tables.</p>
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><th class="stub"><p><span class="math notranslate nohighlight">\(\|\mathsf{L}\vec{x} - \vec{b}\|_2\)</span></p></th>
-<th class="stub"><p><span class="math notranslate nohighlight">\(1\)</span></p></th>
-<td><p><code class="docutils literal notranslate"><span class="pre">unscaled</span></code></p></td>
+<tr class="row-even"><th class="stub"><p><code class="docutils literal notranslate"><span class="pre">unscaled</span></code></p></th>
+<td><p><span class="math notranslate nohighlight">\(\|\mathsf{L}\vec{x} - \vec{b}\|_2\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(1\)</span></p></td>
 <td><p><a class="footnote-reference brackets" href="#fipy-convergence-test" id="id13" role="doc-noteref"><span class="fn-bracket">[</span>5<span class="fn-bracket">]</span></a></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">ABSOLUTE</span></code></p></td>
 <td><p><a class="footnote-reference brackets" href="#fipy-convergence-test" id="id14" role="doc-noteref"><span class="fn-bracket">[</span>5<span class="fn-bracket">]</span></a></p></td>
 <td><p><a class="footnote-reference brackets" href="#fipy-convergence-test" id="id15" role="doc-noteref"><span class="fn-bracket">[</span>5<span class="fn-bracket">]</span></a></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">AZ_noscaled</span></code></p></td>
 </tr>
-<tr class="row-odd"><th class="stub"><p><span class="math notranslate nohighlight">\(\|\mathsf{L}\vec{x} - \vec{b}\|_2\)</span></p></th>
-<th class="stub"><p><span class="math notranslate nohighlight">\(\|\vec{b}\|_2\)</span></p></th>
-<td><p><code class="docutils literal notranslate"><span class="pre">RHS</span></code></p></td>
+<tr class="row-odd"><th class="stub"><p><code class="docutils literal notranslate"><span class="pre">RHS</span></code></p></th>
+<td><p><span class="math notranslate nohighlight">\(\|\mathsf{L}\vec{x} - \vec{b}\|_2\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(\|\vec{b}\|_2\)</span></p></td>
 <td><p><a class="reference external" href="https://petsc.org/main/docs/manualpages/KSP/KSP_NORM_UNPRECONDITIONED/"><code class="docutils literal notranslate"><span class="pre">KSP_NORM_UNPRECONDITIONED</span></code></a></p></td>
 <td><p><a class="footnote-reference brackets" href="#fipy-convergence-test" id="id16" role="doc-noteref"><span class="fn-bracket">[</span>5<span class="fn-bracket">]</span></a></p></td>
 <td><p><a class="reference external" href="https://sourceforge.net/p/pysparse/git/ci/master/tree/pysparse/itsolvers/src/cgs.c#l90">cgs</a>, <a class="reference external" href="https://sourceforge.net/p/pysparse/git/ci/master/tree/pysparse/itsolvers/src/pcg.c#l154">pcg</a>, <a class="reference external" href="https://sourceforge.net/p/pysparse/git/ci/master/tree/pysparse/itsolvers/src/qmrs.c#l139">qmres</a>, or <a class="footnote-reference brackets" href="#fipy-convergence-test" id="id17" role="doc-noteref"><span class="fn-bracket">[</span>5<span class="fn-bracket">]</span></a></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">default</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">AZ_rhs</span></code></p></td>
 </tr>
-<tr class="row-even"><th class="stub"><p><span class="math notranslate nohighlight">\(\|\mathsf{L}\vec{x} - \vec{b}\|_2\)</span></p></th>
-<th class="stub"><p><span class="math notranslate nohighlight">\(\|\vec{L}\|_\infty\)</span></p></th>
-<td><p><code class="docutils literal notranslate"><span class="pre">matrix</span></code></p></td>
+<tr class="row-even"><th class="stub"><p><code class="docutils literal notranslate"><span class="pre">matrix</span></code></p></th>
+<td><p><span class="math notranslate nohighlight">\(\|\mathsf{L}\vec{x} - \vec{b}\|_2\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(\|\vec{L}\|_\infty\)</span></p></td>
 <td><p><a class="footnote-reference brackets" href="#fipy-convergence-test" id="id18" role="doc-noteref"><span class="fn-bracket">[</span>5<span class="fn-bracket">]</span></a></p></td>
 <td><p><a class="footnote-reference brackets" href="#fipy-convergence-test" id="id19" role="doc-noteref"><span class="fn-bracket">[</span>5<span class="fn-bracket">]</span></a></p></td>
 <td><p><a class="footnote-reference brackets" href="#fipy-convergence-test" id="id20" role="doc-noteref"><span class="fn-bracket">[</span>5<span class="fn-bracket">]</span></a></p></td>
 <td><p><a class="footnote-reference brackets" href="#fipy-convergence-test" id="id21" role="doc-noteref"><span class="fn-bracket">[</span>5<span class="fn-bracket">]</span></a></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">AZ_Anorm</span></code></p></td>
 </tr>
-<tr class="row-odd"><th class="stub"><p><span class="math notranslate nohighlight">\(\|\mathsf{L}\vec{x} - \vec{b}\|_2\)</span></p></th>
-<th class="stub"><p><span class="math notranslate nohighlight">\(\|\mathsf{L}\vec{x} - \vec{b}\|_2^{(0)}\)</span></p></th>
-<td><p><code class="docutils literal notranslate"><span class="pre">initial</span></code></p></td>
+<tr class="row-odd"><th class="stub"><p><code class="docutils literal notranslate"><span class="pre">initial</span></code></p></th>
+<td><p><span class="math notranslate nohighlight">\(\|\mathsf{L}\vec{x} - \vec{b}\|_2\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(\|\mathsf{L}\vec{x} - \vec{b}\|_2^{(0)}\)</span></p></td>
 <td><p><a class="footnote-reference brackets" href="#fipy-convergence-test" id="id22" role="doc-noteref"><span class="fn-bracket">[</span>5<span class="fn-bracket">]</span></a></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">RELATIVE_INI_CORE</span></code> (<code class="docutils literal notranslate"><span class="pre">default</span></code>)</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">RELATIVE_INI_CORE</span></code></p></td>
 <td><p><a class="reference external" href="https://sourceforge.net/p/pysparse/git/ci/master/tree/pysparse/itsolvers/src/bicgstab.c#l287">bicgstab</a>, <a class="reference external" href="https://sourceforge.net/p/pysparse/git/ci/master/tree/pysparse/itsolvers/src/gmres.c#l159">gmres</a>, <a class="reference external" href="https://sourceforge.net/p/pysparse/git/ci/master/tree/pysparse/itsolvers/src/minres.c#l195">minres</a>, or <a class="footnote-reference brackets" href="#fipy-convergence-test" id="id23" role="doc-noteref"><span class="fn-bracket">[</span>5<span class="fn-bracket">]</span></a></p></td>
 <td><p><a class="footnote-reference brackets" href="#fipy-convergence-test" id="id24" role="doc-noteref"><span class="fn-bracket">[</span>5<span class="fn-bracket">]</span></a></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">AZ_r0</span></code> (<code class="docutils literal notranslate"><span class="pre">default</span></code>)</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">AZ_r0</span></code></p></td>
 </tr>
-<tr class="row-even"><th class="stub"><p><span class="math notranslate nohighlight">\(\|\mathsf{L}\vec{x} - \vec{b}\|_\infty\)</span></p></th>
-<th class="stub"><p><span class="math notranslate nohighlight">\(\|\mathsf{L}\|_\infty  * \|\vec{x}\|_1 - \|\vec{b}\|_\infty\)</span></p></th>
-<td><p><code class="docutils literal notranslate"><span class="pre">solution</span></code></p></td>
+<tr class="row-even"><th class="stub"><p><code class="docutils literal notranslate"><span class="pre">solution</span></code></p></th>
+<td><p><span class="math notranslate nohighlight">\(\|\mathsf{L}\vec{x} - \vec{b}\|_\infty\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(\|\mathsf{L}\|_\infty  * \|\vec{x}\|_1 - \|\vec{b}\|_\infty\)</span></p></td>
 <td></td>
 <td></td>
 <td></td>
 <td></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">AZ_sol</span></code></p></td>
 </tr>
-<tr class="row-odd"><th class="stub"><p><span class="math notranslate nohighlight">\(\left\|\mathsf{P}^{-1}(\mathsf{L}\vec{x} - \vec{b})\right\|_2\)</span></p></th>
-<th class="stub"><p><span class="math notranslate nohighlight">\(\left\|\vec{b}\right\|_2\)</span></p></th>
-<td><p><code class="docutils literal notranslate"><span class="pre">preconditioned</span></code></p></td>
+<tr class="row-odd"><th class="stub"><p><code class="docutils literal notranslate"><span class="pre">preconditioned</span></code></p></th>
+<td><p><span class="math notranslate nohighlight">\(\left\|\mathsf{P}^{-1}(\mathsf{L}\vec{x} - \vec{b})\right\|_2\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(\left\|\vec{b}\right\|_2\)</span></p></td>
 <td><p><a class="reference external" href="https://petsc.org/main/docs/manualpages/KSP/KSP_NORM_PRECONDITIONED/"><code class="docutils literal notranslate"><span class="pre">KSP_NORM_PRECONDITIONED</span></code></a></p></td>
 <td></td>
 <td></td>
 <td></td>
 <td></td>
 </tr>
-<tr class="row-even"><th class="stub"><p><span class="math notranslate nohighlight">\(\sqrt{(\mathsf{L}\vec{x} - \vec{b})\mathsf{P}^{-1}(\mathsf{L}\vec{x} - \vec{b})}\)</span></p></th>
-<th class="stub"><p><span class="math notranslate nohighlight">\(\left\|\vec{b}\right\|_2\)</span></p></th>
-<td><p><code class="docutils literal notranslate"><span class="pre">natural</span></code></p></td>
+<tr class="row-even"><th class="stub"><p><code class="docutils literal notranslate"><span class="pre">natural</span></code></p></th>
+<td><p><span class="math notranslate nohighlight">\(\sqrt{(\mathsf{L}\vec{x} - \vec{b})\mathsf{P}^{-1}(\mathsf{L}\vec{x} - \vec{b})}\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(\left\|\vec{b}\right\|_2\)</span></p></td>
 <td><p><a class="reference external" href="https://petsc.org/main/docs/manualpages/KSP/KSP_NORM_NATURAL/"><code class="docutils literal notranslate"><span class="pre">KSP_NORM_NATURAL</span></code></a></p></td>
 <td></td>
 <td></td>
 <td></td>
 <td></td>
 </tr>
+<tr class="row-odd"><th class="stub"><p><code class="docutils literal notranslate"><span class="pre">default</span></code></p></th>
+<td></td>
+<td></td>
+<td><p><a class="reference external" href="https://petsc.org/main/manualpages/KSP/KSPNormType/"><code class="docutils literal notranslate"><span class="pre">KSP_NORM_DEFAULT</span></code></a> (<code class="docutils literal notranslate"><span class="pre">RHS</span></code> or <code class="docutils literal notranslate"><span class="pre">preconditioned</span></code>)</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">initial</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">RHS</span></code> or <code class="docutils literal notranslate"><span class="pre">initial</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">RHS</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">initial</span></code></p></td>
+</tr>
 </tbody>
 </table>
-<p>Convergence is detected if <code class="docutils literal notranslate"><span class="pre">residual</span> <span class="pre">&lt;</span> <span class="pre">tolerance</span> <span class="pre">*</span> <span class="pre">scale</span></code>.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p><a class="reference internal" href="#pyamg">PyAMG</a> is a set of preconditioners applied on top of <a class="reference internal" href="#scipy">SciPy</a>, so
+is not explicitly included in these tables.</p>
+</div>
 <section id="default">
 <h3><code class="docutils literal notranslate"><span class="pre">default</span></code><a class="headerlink" href="#default" title="Permalink to this heading">¶</a></h3>
-<p>The behavior of <code class="docutils literal notranslate"><span class="pre">criterion=&quot;default&quot;</span></code> depends on the solver suite and,
-sometimes, on the specific solver.  Where feasible, this behavior is
-specified in the table.</p>
+<p>The setting <code class="docutils literal notranslate"><span class="pre">criterion=&quot;default&quot;</span></code> is equivalent to what the particular
+suite and solver does if not specifically configured.  The <code class="docutils literal notranslate"><span class="pre">default</span></code> row
+of the table is a best effort at documenting what will happen.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
 <ul class="simple">
+<li><p>All LU solvers default to <code class="docutils literal notranslate"><span class="pre">&quot;initial&quot;</span></code>.</p></li>
 <li><p><a class="reference internal" href="#pysparse">PySparse</a> has two different groups of solvers,
 with different defaults.</p></li>
-<li><p><a class="reference internal" href="#petsc">PETSc</a> accepts <code class="docutils literal notranslate"><span class="pre">KSP_NORM_DEFAULT</span></code> in order to
+<li><p><a class="reference internal" href="#petsc">PETSc</a> accepts <a class="reference external" href="https://petsc.org/main/manualpages/KSP/KSPNormType/"><code class="docutils literal notranslate"><span class="pre">KSP_NORM_DEFAULT</span></code></a> in order to
 “use the default for the current <code class="docutils literal notranslate"><span class="pre">KSPType</span></code>”.  Discerning the actual
 behavior would require burning the code in a bowl of chicken entrails.
 (It is reasonable to assume <a class="reference external" href="https://petsc.org/main/docs/manualpages/KSP/KSP_NORM_PRECONDITIONED/"><code class="docutils literal notranslate"><span class="pre">KSP_NORM_PRECONDITIONED</span></code></a> for
 left-preconditioned solvers and <a class="reference external" href="https://petsc.org/main/docs/manualpages/KSP/KSP_NORM_UNPRECONDITIONED/"><code class="docutils literal notranslate"><span class="pre">KSP_NORM_UNPRECONDITIONED</span></code></a> otherwise;
 even the <a class="reference internal" href="#petsc">PETSc</a> documentation says that <a class="reference external" href="https://petsc.org/main/docs/manualpages/KSP/KSP_NORM_NATURAL/"><code class="docutils literal notranslate"><span class="pre">KSP_NORM_NATURAL</span></code></a> is <a class="reference external" href="https://petsc.org/main/manualpages/KSP/KSPCGS/#developer-note">“weird”</a>).</p></li>
-<li><p>LU solvers default to <code class="docutils literal notranslate"><span class="pre">&quot;initial&quot;</span></code>.</p></li>
 </ul>
+</div>
 </section>
 <section id="absolute-tolerance">
 <h3><code class="docutils literal notranslate"><span class="pre">absolute_tolerance</span></code><a class="headerlink" href="#absolute-tolerance" title="Permalink to this heading">¶</a></h3>
@@ -404,10 +417,11 @@ they succed or fail.  This information is captured as a
 <a class="reference internal" href="generated/fipy.solvers.solver.html#fipy.solvers.solver.Solver" title="fipy.solvers.solver.Solver"><code class="xref py py-class docutils literal notranslate"><span class="pre">Solver</span></code></a> after calling
 <a class="reference internal" href="generated/fipy.terms.term.html#fipy.terms.term.Term.solve" title="fipy.terms.term.Term.solve"><code class="xref py py-meth docutils literal notranslate"><span class="pre">solve()</span></code></a> or
 <a class="reference internal" href="generated/fipy.terms.term.html#fipy.terms.term.Term.sweep" title="fipy.terms.term.Term.sweep"><code class="xref py py-meth docutils literal notranslate"><span class="pre">sweep()</span></code></a>.</p>
-<table class="docutils align-default" id="id26">
+<table class="wideshow longtable docutils align-default" id="id26">
 <caption><span class="caption-text">Convergence Status Codes</span><a class="headerlink" href="#id26" title="Permalink to this table">¶</a></caption>
 <thead>
 <tr class="row-odd"><th class="head stub"></th>
+<th class="head"></th>
 <th class="head"><p><a class="reference internal" href="#petsc">PETSc</a></p></th>
 <th class="head"><p><a class="reference internal" href="#pyamgx">pyamgx</a></p></th>
 <th class="head"><p><a class="reference internal" href="#pysparse">PySparse</a></p></th>
@@ -416,141 +430,152 @@ they succed or fail.  This information is captured as a
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><th class="stub"><p>Convergence criteria met.</p></th>
-<td><p><a class="reference external" href="https://petsc.org/main/docs/manualpages/KSP/KSP_CONVERGED_ITS/"><code class="docutils literal notranslate"><span class="pre">KSP_CONVERGED_ITS</span></code></a></p></td>
+<tr class="row-even"><th class="stub"><p><a class="reference internal" href="generated/fipy.solvers.convergence.html#fipy.solvers.convergence.Convergence" title="fipy.solvers.convergence.Convergence"><code class="xref py py-class docutils literal notranslate"><span class="pre">Convergence</span></code></a></p></th>
+<td><p>Convergence criteria met.</p></td>
+<td></td>
 <td><p><a class="reference external" href="https://github.com/NVIDIA/AMGX/blob/main/doc/AMGX_Reference.pdf"><code class="docutils literal notranslate"><span class="pre">AMGX_SOLVE_SUCCESS</span></code></a></p></td>
 <td></td>
 <td><p><a class="reference external" href="https://docs.scipy.org/doc/scipy/reference/generated/scipy.sparse.linalg.gmres.html"><code class="docutils literal notranslate"><span class="pre">0</span></code></a></p></td>
 <td><p><a class="reference external" href="https://trilinos.github.io/pdfs/AztecOOUserGuide.pdf"><code class="docutils literal notranslate"><span class="pre">AZ_normal</span></code></a></p></td>
 </tr>
-<tr class="row-odd"><th class="stub"><p>Converged, residual is as small as seems reasonable on this machine.</p></th>
+<tr class="row-odd"><th class="stub"><p><a class="reference internal" href="generated/fipy.solvers.convergence.html#fipy.solvers.convergence.IterationConvergence" title="fipy.solvers.convergence.IterationConvergence"><code class="xref py py-class docutils literal notranslate"><span class="pre">IterationConvergence</span></code></a></p></th>
+<td><p>Requested iterations complete (and no residual calculated).</p></td>
+<td><p><a class="reference external" href="https://petsc.org/main/docs/manualpages/KSP/KSP_CONVERGED_ITS/"><code class="docutils literal notranslate"><span class="pre">KSP_CONVERGED_ITS</span></code></a></p></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="row-even"><th class="stub"><p><a class="reference internal" href="generated/fipy.solvers.convergence.html#fipy.solvers.convergence.AbsoluteToleranceConvergence" title="fipy.solvers.convergence.AbsoluteToleranceConvergence"><code class="xref py py-class docutils literal notranslate"><span class="pre">AbsoluteToleranceConvergence</span></code></a></p></th>
+<td><p>Converged, residual is as small as seems reasonable on this machine.</p></td>
 <td><p><a class="reference external" href="https://petsc.org/main/docs/manualpages/KSP/KSP_CONVERGED_ATOL/"><code class="docutils literal notranslate"><span class="pre">KSP_CONVERGED_ATOL</span></code></a></p></td>
 <td></td>
 <td><p><a class="reference external" href="http://pysparse.sourceforge.net/itsolvers.html"><code class="docutils literal notranslate"><span class="pre">2</span></code></a></p></td>
 <td></td>
 <td></td>
 </tr>
-<tr class="row-even"><th class="stub"><p>Converged, <span class="math notranslate nohighlight">\(\mathbf{b} = 0\)</span>, so the exact solution is <span class="math notranslate nohighlight">\(\mathbf{x} = 0\)</span>.</p></th>
+<tr class="row-odd"><th class="stub"><p><a class="reference internal" href="generated/fipy.solvers.convergence.html#fipy.solvers.convergence.RHSZeroConvergence" title="fipy.solvers.convergence.RHSZeroConvergence"><code class="xref py py-class docutils literal notranslate"><span class="pre">RHSZeroConvergence</span></code></a></p></th>
+<td><p>Converged, <span class="math notranslate nohighlight">\(\mathbf{b} = 0\)</span>, so the exact solution is <span class="math notranslate nohighlight">\(\mathbf{x} = 0\)</span>.</p></td>
 <td></td>
 <td></td>
 <td><p><a class="reference external" href="http://pysparse.sourceforge.net/itsolvers.html"><code class="docutils literal notranslate"><span class="pre">1</span></code></a></p></td>
 <td></td>
 <td></td>
 </tr>
-<tr class="row-odd"><th class="stub"><p>Converged, relative error appears to be less than tolerance.</p></th>
+<tr class="row-even"><th class="stub"><p><a class="reference internal" href="generated/fipy.solvers.convergence.html#fipy.solvers.convergence.RelativeToleranceConvergence" title="fipy.solvers.convergence.RelativeToleranceConvergence"><code class="xref py py-class docutils literal notranslate"><span class="pre">RelativeToleranceConvergence</span></code></a></p></th>
+<td><p>Converged, relative error appears to be less than tolerance.</p></td>
 <td><p><a class="reference external" href="https://petsc.org/main/docs/manualpages/KSP/KSP_CONVERGED_RTOL/"><code class="docutils literal notranslate"><span class="pre">KSP_CONVERGED_RTOL</span></code></a></p></td>
 <td></td>
 <td><p><a class="reference external" href="http://pysparse.sourceforge.net/itsolvers.html"><code class="docutils literal notranslate"><span class="pre">0</span></code></a></p></td>
 <td></td>
 <td></td>
 </tr>
-<tr class="row-even"><th class="stub"></th>
+<tr class="row-odd"><th class="stub"><p><a class="reference internal" href="generated/fipy.solvers.convergence.html#fipy.solvers.convergence.HappyBreakdownConvergence" title="fipy.solvers.convergence.HappyBreakdownConvergence"><code class="xref py py-class docutils literal notranslate"><span class="pre">HappyBreakdownConvergence</span></code></a></p></th>
+<td><p>“Exact” solution found and more iterations will just make things worse.</p></td>
 <td><p><a class="reference external" href="https://petsc.org/main/docs/manualpages/KSP/KSPConvergedReason/"><code class="docutils literal notranslate"><span class="pre">KSP_CONVERGED_HAPPY_BREAKDOWN</span></code></a></p></td>
 <td></td>
 <td></td>
 <td></td>
 <td></td>
 </tr>
-<tr class="row-odd"><th class="stub"><p>Solve still in progress.</p></th>
-<td><p><a class="reference external" href="https://petsc.org/main/docs/manualpages/KSP/KSP_CONVERGED_ITERATING/"><code class="docutils literal notranslate"><span class="pre">KSP_CONVERGED_ITERATING</span></code></a></p></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr class="row-even"><th class="stub"></th>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr class="row-odd"><th class="stub"><p>Illegal input or breakdown</p></th>
-<td></td>
-<td><p><a class="reference external" href="https://github.com/NVIDIA/AMGX/blob/main/doc/AMGX_Reference.pdf"><code class="docutils literal notranslate"><span class="pre">AMGX_SOLVE_FAILED</span></code></a></p></td>
-<td></td>
-<td><p><a class="reference external" href="https://docs.scipy.org/doc/scipy/reference/generated/scipy.sparse.linalg.gmres.html"><code class="docutils literal notranslate"><span class="pre">&lt;0</span></code></a></p></td>
-<td></td>
-</tr>
-<tr class="row-even"><th class="stub"><p>The iterative solver has broken down.</p></th>
-<td><p><a class="reference external" href="https://petsc.org/main/docs/manualpages/KSP/KSP_DIVERGED_BREAKDOWN/"><code class="docutils literal notranslate"><span class="pre">KSP_DIVERGED_BREAKDOWN</span></code></a></p></td>
-<td></td>
-<td></td>
-<td></td>
-<td><p><a class="reference external" href="https://trilinos.github.io/pdfs/AztecOOUserGuide.pdf"><code class="docutils literal notranslate"><span class="pre">AZ_breakdown</span></code></a></p></td>
-</tr>
-<tr class="row-odd"><th class="stub"><p>Initial residual is orthogonal to preconditioned initial residual. Try a different preconditioner, or a different initial Level.continue to enlarge the Krylov space.</p></th>
-<td><p><a class="reference external" href="https://petsc.org/main/docs/manualpages/KSP/KSP_DIVERGED_BREAKDOWN_BICG/"><code class="docutils literal notranslate"><span class="pre">KSP_DIVERGED_BREAKDOWN_BICG</span></code></a></p></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr class="row-even"><th class="stub"><p>Maximum number of iterations was reached.</p></th>
-<td><p><a class="reference external" href="https://petsc.org/main/docs/manualpages/KSP/KSP_DIVERGED_ITS/"><code class="docutils literal notranslate"><span class="pre">KSP_DIVERGED_ITS</span></code></a></p></td>
-<td><p><a class="reference external" href="https://github.com/NVIDIA/AMGX/blob/main/doc/AMGX_Reference.pdf"><code class="docutils literal notranslate"><span class="pre">AMGX_SOLVE_DIVERGED</span></code></a></p></td>
-<td><p><a class="reference external" href="http://pysparse.sourceforge.net/itsolvers.html"><code class="docutils literal notranslate"><span class="pre">-1</span></code></a></p></td>
-<td><p><a class="reference external" href="https://docs.scipy.org/doc/scipy/reference/generated/scipy.sparse.linalg.gmres.html"><code class="docutils literal notranslate"><span class="pre">&gt;0</span></code></a></p></td>
-<td><p><a class="reference external" href="https://trilinos.github.io/pdfs/AztecOOUserGuide.pdf"><code class="docutils literal notranslate"><span class="pre">AZ_maxits</span></code></a></p></td>
-</tr>
-<tr class="row-odd"><th class="stub"><p>The system involving the preconditioner was ill-conditioned.</p></th>
-<td><p><a class="reference external" href="https://petsc.org/main/docs/manualpages/KSP/KSP_DIVERGED_PC_FAILED/"><code class="docutils literal notranslate"><span class="pre">KSP_DIVERGED_PC_FAILED</span></code></a></p></td>
-<td></td>
-<td><p><a class="reference external" href="http://pysparse.sourceforge.net/itsolvers.html"><code class="docutils literal notranslate"><span class="pre">-2</span></code></a></p></td>
-<td></td>
-<td></td>
-</tr>
-<tr class="row-even"><th class="stub"><p>An inner product of the form <span class="math notranslate nohighlight">\(\mathbf{x}^T \mathsf{P}^{-1} \mathbf{x}\)</span> was not positive, so the preconditioning matrix <span class="math notranslate nohighlight">\(\mathsf{P}\)</span> does not appear to be positive definite.</p></th>
-<td><p><a class="reference external" href="https://petsc.org/main/docs/manualpages/KSP/KSP_DIVERGED_INDEFINITE_PC/"><code class="docutils literal notranslate"><span class="pre">KSP_DIVERGED_INDEFINITE_PC</span></code></a></p></td>
-<td></td>
-<td><p><a class="reference external" href="http://pysparse.sourceforge.net/itsolvers.html"><code class="docutils literal notranslate"><span class="pre">-3</span></code></a></p></td>
-<td></td>
-<td></td>
-</tr>
-<tr class="row-odd"><th class="stub"><p>The matrix <span class="math notranslate nohighlight">\(\mathsf{L}\)</span> appears to be ill-conditioned.</p></th>
-<td><p><a class="reference external" href="https://petsc.org/main/docs/manualpages/KSP/KSPConvergedReason/"><code class="docutils literal notranslate"><span class="pre">KSP_DIVERGED_INDEFINITE_MAT</span></code></a></p></td>
-<td></td>
-<td><p><a class="reference external" href="http://pysparse.sourceforge.net/itsolvers.html"><code class="docutils literal notranslate"><span class="pre">-4</span></code></a></p></td>
-<td></td>
-<td><p><a class="reference external" href="https://trilinos.github.io/pdfs/AztecOOUserGuide.pdf"><code class="docutils literal notranslate"><span class="pre">AZ_ill_cond</span></code></a></p></td>
-</tr>
-<tr class="row-even"><th class="stub"><p>The method stagnated.</p></th>
-<td></td>
-<td></td>
-<td><p><a class="reference external" href="http://pysparse.sourceforge.net/itsolvers.html"><code class="docutils literal notranslate"><span class="pre">-5</span></code></a></p></td>
-<td></td>
-<td></td>
-</tr>
-<tr class="row-odd"><th class="stub"><p>A scalar quantity became too small or too large to continue computing.</p></th>
-<td><p><a class="reference external" href="https://petsc.org/main/docs/manualpages/KSP/KSPConvergedReason/"><code class="docutils literal notranslate"><span class="pre">KSP_DIVERGED_NANORINF</span></code></a></p></td>
-<td></td>
-<td><p><a class="reference external" href="http://pysparse.sourceforge.net/itsolvers.html"><code class="docutils literal notranslate"><span class="pre">-6</span></code></a></p></td>
-<td></td>
-<td></td>
-</tr>
-<tr class="row-even"><th class="stub"><p>The iterative solver has terminated due to a lack of accuracy in the recursive residual (caused by rounding errors).</p></th>
+<tr class="row-even"><th class="stub"><p><a class="reference internal" href="generated/fipy.solvers.convergence.html#fipy.solvers.convergence.LossOfAccuracyConvergence" title="fipy.solvers.convergence.LossOfAccuracyConvergence"><code class="xref py py-class docutils literal notranslate"><span class="pre">LossOfAccuracyConvergence</span></code></a></p></th>
+<td><p>The iterative solver has terminated due to a lack of accuracy in the recursive residual (caused by rounding errors).</p></td>
 <td></td>
 <td></td>
 <td></td>
 <td></td>
 <td><p><a class="reference external" href="https://trilinos.github.io/pdfs/AztecOOUserGuide.pdf"><code class="docutils literal notranslate"><span class="pre">AZ_loss</span></code></a></p></td>
 </tr>
-<tr class="row-odd"><th class="stub"></th>
+<tr class="row-odd"><th class="stub"><p><a class="reference internal" href="generated/fipy.solvers.convergence.html#fipy.solvers.convergence.IteratingConvergence" title="fipy.solvers.convergence.IteratingConvergence"><code class="xref py py-class docutils literal notranslate"><span class="pre">IteratingConvergence</span></code></a></p></th>
+<td><p>Solve still in progress.</p></td>
+<td><p><a class="reference external" href="https://petsc.org/main/docs/manualpages/KSP/KSP_CONVERGED_ITERATING/"><code class="docutils literal notranslate"><span class="pre">KSP_CONVERGED_ITERATING</span></code></a></p></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<table class="wideshow longtable docutils align-default" id="id27">
+<caption><span class="caption-text">Divergence Status Codes</span><a class="headerlink" href="#id27" title="Permalink to this table">¶</a></caption>
+<thead>
+<tr class="row-odd"><th class="head stub"></th>
+<th class="head"></th>
+<th class="head"><p><a class="reference internal" href="#petsc">PETSc</a></p></th>
+<th class="head"><p><a class="reference internal" href="#pyamgx">pyamgx</a></p></th>
+<th class="head"><p><a class="reference internal" href="#pysparse">PySparse</a></p></th>
+<th class="head"><p><a class="reference internal" href="#scipy">SciPy</a></p></th>
+<th class="head"><p><a class="reference internal" href="#trilinos">Trilinos</a></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><th class="stub"><p><a class="reference internal" href="generated/fipy.solvers.convergence.html#fipy.solvers.convergence.BreakdownDivergence" title="fipy.solvers.convergence.BreakdownDivergence"><code class="xref py py-class docutils literal notranslate"><span class="pre">BreakdownDivergence</span></code></a></p></th>
+<td><p>Illegal input or the iterative solver has broken down.</p></td>
+<td><p><a class="reference external" href="https://petsc.org/main/docs/manualpages/KSP/KSP_DIVERGED_BREAKDOWN/"><code class="docutils literal notranslate"><span class="pre">KSP_DIVERGED_BREAKDOWN</span></code></a></p></td>
+<td><p><a class="reference external" href="https://github.com/NVIDIA/AMGX/blob/main/doc/AMGX_Reference.pdf"><code class="docutils literal notranslate"><span class="pre">AMGX_SOLVE_FAILED</span></code></a></p></td>
+<td></td>
+<td><p><a class="reference external" href="https://docs.scipy.org/doc/scipy/reference/generated/scipy.sparse.linalg.gmres.html"><code class="docutils literal notranslate"><span class="pre">&lt;0</span></code></a></p></td>
+<td><p><a class="reference external" href="https://trilinos.github.io/pdfs/AztecOOUserGuide.pdf"><code class="docutils literal notranslate"><span class="pre">AZ_breakdown</span></code></a></p></td>
+</tr>
+<tr class="row-odd"><th class="stub"><p><a class="reference internal" href="generated/fipy.solvers.convergence.html#fipy.solvers.convergence.IterationDivergence" title="fipy.solvers.convergence.IterationDivergence"><code class="xref py py-class docutils literal notranslate"><span class="pre">IterationDivergence</span></code></a></p></th>
+<td><p>Maximum number of iterations was reached.</p></td>
+<td><p><a class="reference external" href="https://petsc.org/main/docs/manualpages/KSP/KSP_DIVERGED_ITS/"><code class="docutils literal notranslate"><span class="pre">KSP_DIVERGED_ITS</span></code></a></p></td>
+<td><p><a class="reference external" href="https://github.com/NVIDIA/AMGX/blob/main/doc/AMGX_Reference.pdf"><code class="docutils literal notranslate"><span class="pre">AMGX_SOLVE_DIVERGED</span></code></a></p></td>
+<td><p><a class="reference external" href="http://pysparse.sourceforge.net/itsolvers.html"><code class="docutils literal notranslate"><span class="pre">-1</span></code></a></p></td>
+<td><p><a class="reference external" href="https://docs.scipy.org/doc/scipy/reference/generated/scipy.sparse.linalg.gmres.html"><code class="docutils literal notranslate"><span class="pre">&gt;0</span></code></a></p></td>
+<td><p><a class="reference external" href="https://trilinos.github.io/pdfs/AztecOOUserGuide.pdf"><code class="docutils literal notranslate"><span class="pre">AZ_maxits</span></code></a></p></td>
+</tr>
+<tr class="row-even"><th class="stub"><p><a class="reference internal" href="generated/fipy.solvers.convergence.html#fipy.solvers.convergence.PreconditioningDivergence" title="fipy.solvers.convergence.PreconditioningDivergence"><code class="xref py py-class docutils literal notranslate"><span class="pre">PreconditioningDivergence</span></code></a></p></th>
+<td><p>The system involving the preconditioner was ill-conditioned.</p></td>
+<td><p><a class="reference external" href="https://petsc.org/main/docs/manualpages/KSP/KSP_DIVERGED_PC_FAILED/"><code class="docutils literal notranslate"><span class="pre">KSP_DIVERGED_PC_FAILED</span></code></a></p></td>
+<td></td>
+<td><p><a class="reference external" href="http://pysparse.sourceforge.net/itsolvers.html"><code class="docutils literal notranslate"><span class="pre">-2</span></code></a></p></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="row-odd"><th class="stub"><p><a class="reference internal" href="generated/fipy.solvers.convergence.html#fipy.solvers.convergence.IllConditionedPreconditionerDivergence" title="fipy.solvers.convergence.IllConditionedPreconditionerDivergence"><code class="xref py py-class docutils literal notranslate"><span class="pre">IllConditionedPreconditionerDivergence</span></code></a></p></th>
+<td><p>An inner product of the form <span class="math notranslate nohighlight">\(\mathbf{x}^T \mathsf{P}^{-1} \mathbf{x}\)</span> was not positive, so the preconditioning matrix <span class="math notranslate nohighlight">\(\mathsf{P}\)</span> does not appear to be positive definite.</p></td>
+<td><p><a class="reference external" href="https://petsc.org/main/docs/manualpages/KSP/KSP_DIVERGED_INDEFINITE_PC/"><code class="docutils literal notranslate"><span class="pre">KSP_DIVERGED_INDEFINITE_PC</span></code></a></p></td>
+<td></td>
+<td><p><a class="reference external" href="http://pysparse.sourceforge.net/itsolvers.html"><code class="docutils literal notranslate"><span class="pre">-3</span></code></a></p></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="row-even"><th class="stub"><p><a class="reference internal" href="generated/fipy.solvers.convergence.html#fipy.solvers.convergence.IllConditionedDivergence" title="fipy.solvers.convergence.IllConditionedDivergence"><code class="xref py py-class docutils literal notranslate"><span class="pre">IllConditionedDivergence</span></code></a></p></th>
+<td><p>The matrix <span class="math notranslate nohighlight">\(\mathsf{L}\)</span> appears to be ill-conditioned.</p></td>
+<td><p><a class="reference external" href="https://petsc.org/main/docs/manualpages/KSP/KSPConvergedReason/"><code class="docutils literal notranslate"><span class="pre">KSP_DIVERGED_INDEFINITE_MAT</span></code></a></p></td>
+<td></td>
+<td><p><a class="reference external" href="http://pysparse.sourceforge.net/itsolvers.html"><code class="docutils literal notranslate"><span class="pre">-4</span></code></a></p></td>
+<td></td>
+<td><p><a class="reference external" href="https://trilinos.github.io/pdfs/AztecOOUserGuide.pdf"><code class="docutils literal notranslate"><span class="pre">AZ_ill_cond</span></code></a></p></td>
+</tr>
+<tr class="row-odd"><th class="stub"><p><a class="reference internal" href="generated/fipy.solvers.convergence.html#fipy.solvers.convergence.StagnatedDivergence" title="fipy.solvers.convergence.StagnatedDivergence"><code class="xref py py-class docutils literal notranslate"><span class="pre">StagnatedDivergence</span></code></a></p></th>
+<td><p>The method stagnated.</p></td>
+<td></td>
+<td></td>
+<td><p><a class="reference external" href="http://pysparse.sourceforge.net/itsolvers.html"><code class="docutils literal notranslate"><span class="pre">-5</span></code></a></p></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="row-even"><th class="stub"><p><a class="reference internal" href="generated/fipy.solvers.convergence.html#fipy.solvers.convergence.OutOfRangeDivergence" title="fipy.solvers.convergence.OutOfRangeDivergence"><code class="xref py py-class docutils literal notranslate"><span class="pre">OutOfRangeDivergence</span></code></a></p></th>
+<td><p>A scalar quantity became too small or too large to continue computing.</p></td>
+<td><p><a class="reference external" href="https://petsc.org/main/docs/manualpages/KSP/KSPConvergedReason/"><code class="docutils literal notranslate"><span class="pre">KSP_DIVERGED_NANORINF</span></code></a></p></td>
+<td></td>
+<td><p><a class="reference external" href="http://pysparse.sourceforge.net/itsolvers.html"><code class="docutils literal notranslate"><span class="pre">-6</span></code></a></p></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="row-odd"><th class="stub"><p><a class="reference internal" href="generated/fipy.solvers.convergence.html#fipy.solvers.convergence.NullDivergence" title="fipy.solvers.convergence.NullDivergence"><code class="xref py py-class docutils literal notranslate"><span class="pre">NullDivergence</span></code></a></p></th>
+<td><p>Breakdown when solving the Hessenberg system within GMRES.</p></td>
 <td><p><a class="reference external" href="https://petsc.org/main/docs/manualpages/KSP/KSPConvergedReason/"><code class="docutils literal notranslate"><span class="pre">KSP_DIVERGED_NULL</span></code></a></p></td>
 <td></td>
 <td></td>
 <td></td>
 <td></td>
 </tr>
-<tr class="row-even"><th class="stub"><p>The residual norm increased by a factor of <code class="docutils literal notranslate"><span class="pre">divtol</span></code>.</p></th>
+<tr class="row-even"><th class="stub"><p><a class="reference internal" href="generated/fipy.solvers.convergence.html#fipy.solvers.convergence.ToleranceDivergence" title="fipy.solvers.convergence.ToleranceDivergence"><code class="xref py py-class docutils literal notranslate"><span class="pre">ToleranceDivergence</span></code></a></p></th>
+<td><p>The residual norm increased by a factor of <code class="docutils literal notranslate"><span class="pre">divtol</span></code>.</p></td>
 <td><p><a class="reference external" href="https://petsc.org/main/docs/manualpages/KSP/KSP_DIVERGED_DTOL/"><code class="docutils literal notranslate"><span class="pre">KSP_DIVERGED_DTOL</span></code></a></p></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr class="row-odd"><th class="stub"><p>It appears the operator or preconditioner is not symmetric and this Krylov method (<code class="docutils literal notranslate"><span class="pre">KSPCG</span></code>, <code class="docutils literal notranslate"><span class="pre">KSPMINRES</span></code>, <code class="docutils literal notranslate"><span class="pre">KSPCR</span></code>) requires symmetry.</p></th>
-<td><p><a class="reference external" href="https://petsc.org/main/docs/manualpages/KSP/KSP_DIVERGED_NONSYMMETRIC/"><code class="docutils literal notranslate"><span class="pre">KSP_DIVERGED_NONSYMMETRIC</span></code></a></p></td>
 <td></td>
 <td></td>
 <td></td>
@@ -583,7 +608,8 @@ For AztecOO Version 3.6 in Trilinos Release 8.0,
 <aside class="footnote brackets" id="fipy-convergence-test" role="doc-footnote">
 <span class="label"><span class="fn-bracket">[</span>5<span class="fn-bracket">]</span></span>
 <span class="backrefs">(<a role="doc-backlink" href="#id13">1</a>,<a role="doc-backlink" href="#id14">2</a>,<a role="doc-backlink" href="#id15">3</a>,<a role="doc-backlink" href="#id16">4</a>,<a role="doc-backlink" href="#id17">5</a>,<a role="doc-backlink" href="#id18">6</a>,<a role="doc-backlink" href="#id19">7</a>,<a role="doc-backlink" href="#id20">8</a>,<a role="doc-backlink" href="#id21">9</a>,<a role="doc-backlink" href="#id22">10</a>,<a role="doc-backlink" href="#id23">11</a>,<a role="doc-backlink" href="#id24">12</a>)</span>
-<p>Implemented by <a class="reference internal" href="glossary.html#term-FiPy"><span class="xref std std-term">FiPy</span></a></p>
+<p>Implemented by <a class="reference internal" href="glossary.html#term-FiPy"><span class="xref std std-term">FiPy</span></a> using intrinsic
+solver capabilities.</p>
 </aside>
 </aside>
 </section>
@@ -592,7 +618,7 @@ For AztecOO Version 3.6 in Trilinos Release 8.0,
 
 
                 <div class='last-updated'>
-                Last updated on Oct 27, 2023.
+                Last updated on Nov 07, 2023.
                 Created using <a href="http://sphinx-doc.org/">Sphinx</a> 7.1.2.
                 </div>
               </div>
@@ -602,7 +628,7 @@ For AztecOO Version 3.6 in Trilinos Release 8.0,
         <div class="sphinxsidebarwrapper">
 
 <strong>FiPy: A Finite Volume PDE Solver Using Python</strong><br />
-Version 3.1.3+993.gd8a569e7
+Version 3.1.3+1013.g86cb0e44
 
   <div class="sphinxsidebarsection">
   <h3><a href="contents.html">Table Of Contents</a></h3>

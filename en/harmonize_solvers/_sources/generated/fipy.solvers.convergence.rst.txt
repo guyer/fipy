@@ -22,12 +22,20 @@ fipy.solvers.convergence
       Convergence
       ConvergenceBase
       Divergence
+      HappyBreakdownConvergence
       IllConditionedDivergence
       IllConditionedPreconditionerDivergence
+      IteratingConvergence
+      IterationConvergence
       IterationDivergence
+      LossOfAccuracyConvergence
+      NullDivergence
       OutOfRangeDivergence
       PreconditioningDivergence
+      RHSZeroConvergence
       RelativeToleranceConvergence
+      StagnatedDivergence
+      ToleranceDivergence
    
    
 

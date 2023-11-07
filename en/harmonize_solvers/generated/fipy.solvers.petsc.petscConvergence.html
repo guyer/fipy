@@ -35,19 +35,20 @@
   <script type="text/javascript" src="https://www.nist.gov/sites/all/themes/nist_style/js/selectivizr-min.js"></script>
   <![endif]--><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>fipy.solvers.petsc.petscConvergence &#8212; FiPy 3.1.3+993.gd8a569e7 documentation</title>
+    <title>fipy.solvers.petsc.petscConvergence &#8212; FiPy 3.1.3+1013.g86cb0e44 documentation</title>
     <link rel="stylesheet" href="../_static/ntd2d.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=fa44fd50" />
     <link rel="stylesheet" type="text/css" href="../_static/ntd2d.css?v=de7af573" />
     <link rel="stylesheet" type="text/css" href="../_static/plot_directive.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/widetable.css?v=32b6a719" />
     <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
-    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js?v=fda307cf"></script>
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js?v=11dd2392"></script>
     <script src="../_static/doctools.js?v=888ff710"></script>
     <script src="../_static/sphinx_highlight.js?v=4825356b"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="top" title="FiPy 3.1.3+993.gd8a569e7 documentation" href="../contents.html" />
+    <link rel="top" title="FiPy 3.1.3+1013.g86cb0e44 documentation" href="../contents.html" />
     <link rel="up" title="fipy.solvers.petsc" href="fipy.solvers.petsc.html" />
     <link rel="next" title="fipy.solvers.petsc.petscKrylovSolver" href="fipy.solvers.petsc.petscKrylovSolver.html" />
     <link rel="prev" title="fipy.solvers.petsc.linearPCGSolver" href="fipy.solvers.petsc.linearPCGSolver.html" />
@@ -215,7 +216,7 @@ Try a different preconditioner, or a different initial Level.)</p>
 <dl class="py class">
 <dt class="sig sig-object py" id="fipy.solvers.petsc.petscConvergence.KSP_HappyBreakdownConvergence">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">fipy.solvers.petsc.petscConvergence.</span></span><span class="sig-name descname"><span class="pre">KSP_HappyBreakdownConvergence</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">solver</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">iterations</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">residual</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">criterion</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">actual_code</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#fipy.solvers.petsc.petscConvergence.KSP_HappyBreakdownConvergence" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <a class="reference internal" href="fipy.solvers.convergence.html#fipy.solvers.convergence.Convergence" title="fipy.solvers.convergence.Convergence"><code class="xref py py-class docutils literal notranslate"><span class="pre">Convergence</span></code></a></p>
+<dd><p>Bases: <a class="reference internal" href="fipy.solvers.convergence.html#fipy.solvers.convergence.HappyBreakdownConvergence" title="fipy.solvers.convergence.HappyBreakdownConvergence"><code class="xref py py-class docutils literal notranslate"><span class="pre">HappyBreakdownConvergence</span></code></a></p>
 <dl class="py method">
 <dt class="sig sig-object py" id="fipy.solvers.petsc.petscConvergence.KSP_HappyBreakdownConvergence.__str__">
 <span class="sig-name descname"><span class="pre">__str__</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#fipy.solvers.petsc.petscConvergence.KSP_HappyBreakdownConvergence.__str__" title="Permalink to this definition">¶</a></dt>
@@ -254,7 +255,7 @@ positive definite.</p>
 <dl class="py class">
 <dt class="sig sig-object py" id="fipy.solvers.petsc.petscConvergence.KSP_IteratingConvergence">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">fipy.solvers.petsc.petscConvergence.</span></span><span class="sig-name descname"><span class="pre">KSP_IteratingConvergence</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">solver</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">iterations</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">residual</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">criterion</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">actual_code</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#fipy.solvers.petsc.petscConvergence.KSP_IteratingConvergence" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <a class="reference internal" href="fipy.solvers.convergence.html#fipy.solvers.convergence.Convergence" title="fipy.solvers.convergence.Convergence"><code class="xref py py-class docutils literal notranslate"><span class="pre">Convergence</span></code></a></p>
+<dd><p>Bases: <a class="reference internal" href="fipy.solvers.convergence.html#fipy.solvers.convergence.IteratingConvergence" title="fipy.solvers.convergence.IteratingConvergence"><code class="xref py py-class docutils literal notranslate"><span class="pre">IteratingConvergence</span></code></a></p>
 <p>This flag is returned if you call KSPGetConvergedReason() while the
 KSPSolve() is still running.</p>
 <dl class="py method">
@@ -268,7 +269,7 @@ KSPSolve() is still running.</p>
 <dl class="py class">
 <dt class="sig sig-object py" id="fipy.solvers.petsc.petscConvergence.KSP_IterationConvergence">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">fipy.solvers.petsc.petscConvergence.</span></span><span class="sig-name descname"><span class="pre">KSP_IterationConvergence</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">solver</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">iterations</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">residual</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">criterion</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">actual_code</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#fipy.solvers.petsc.petscConvergence.KSP_IterationConvergence" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <a class="reference internal" href="fipy.solvers.convergence.html#fipy.solvers.convergence.Convergence" title="fipy.solvers.convergence.Convergence"><code class="xref py py-class docutils literal notranslate"><span class="pre">Convergence</span></code></a></p>
+<dd><p>Bases: <a class="reference internal" href="fipy.solvers.convergence.html#fipy.solvers.convergence.IterationConvergence" title="fipy.solvers.convergence.IterationConvergence"><code class="xref py py-class docutils literal notranslate"><span class="pre">IterationConvergence</span></code></a></p>
 <p>Used by the KSPPREONLY solver after the single iteration of the
 preconditioner is applied.  Also used when the KSPConvergedSkip()
 convergence test routine is set in KSP.</p>
@@ -347,7 +348,7 @@ Krylov method (KSPCG, KSPMINRES, KSPCR) requires symmetry</p>
 <dl class="py class">
 <dt class="sig sig-object py" id="fipy.solvers.petsc.petscConvergence.KSP_NullDivergence">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">fipy.solvers.petsc.petscConvergence.</span></span><span class="sig-name descname"><span class="pre">KSP_NullDivergence</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">solver</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">iterations</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">residual</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">criterion</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">actual_code</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#fipy.solvers.petsc.petscConvergence.KSP_NullDivergence" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <a class="reference internal" href="fipy.solvers.convergence.html#fipy.solvers.convergence.Divergence" title="fipy.solvers.convergence.Divergence"><code class="xref py py-class docutils literal notranslate"><span class="pre">Divergence</span></code></a></p>
+<dd><p>Bases: <a class="reference internal" href="fipy.solvers.convergence.html#fipy.solvers.convergence.NullDivergence" title="fipy.solvers.convergence.NullDivergence"><code class="xref py py-class docutils literal notranslate"><span class="pre">NullDivergence</span></code></a></p>
 <dl class="py method">
 <dt class="sig sig-object py" id="fipy.solvers.petsc.petscConvergence.KSP_NullDivergence.__str__">
 <span class="sig-name descname"><span class="pre">__str__</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#fipy.solvers.petsc.petscConvergence.KSP_NullDivergence.__str__" title="Permalink to this definition">¶</a></dt>
@@ -389,7 +390,7 @@ hand side.</p>
 <dl class="py class">
 <dt class="sig sig-object py" id="fipy.solvers.petsc.petscConvergence.KSP_ToleranceDivergence">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">fipy.solvers.petsc.petscConvergence.</span></span><span class="sig-name descname"><span class="pre">KSP_ToleranceDivergence</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">solver</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">iterations</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">residual</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">criterion</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">actual_code</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#fipy.solvers.petsc.petscConvergence.KSP_ToleranceDivergence" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <a class="reference internal" href="fipy.solvers.convergence.html#fipy.solvers.convergence.Divergence" title="fipy.solvers.convergence.Divergence"><code class="xref py py-class docutils literal notranslate"><span class="pre">Divergence</span></code></a></p>
+<dd><p>Bases: <a class="reference internal" href="fipy.solvers.convergence.html#fipy.solvers.convergence.ToleranceDivergence" title="fipy.solvers.convergence.ToleranceDivergence"><code class="xref py py-class docutils literal notranslate"><span class="pre">ToleranceDivergence</span></code></a></p>
 <p>Residual norm increased by a factor of divtol.</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="fipy.solvers.petsc.petscConvergence.KSP_ToleranceDivergence.__str__">
@@ -403,7 +404,7 @@ hand side.</p>
 
 
                 <div class='last-updated'>
-                Last updated on Oct 27, 2023.
+                Last updated on Nov 07, 2023.
                 Created using <a href="http://sphinx-doc.org/">Sphinx</a> 7.1.2.
                 </div>
               </div>
@@ -413,7 +414,7 @@ hand side.</p>
         <div class="sphinxsidebarwrapper">
 
 <strong>FiPy: A Finite Volume PDE Solver Using Python</strong><br />
-Version 3.1.3+993.gd8a569e7
+Version 3.1.3+1013.g86cb0e44
 
   <div class="sphinxsidebarsection">
   <h3><a href="../contents.html">Table Of Contents</a></h3>
