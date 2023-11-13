@@ -35,7 +35,7 @@
   <script type="text/javascript" src="https://www.nist.gov/sites/all/themes/nist_style/js/selectivizr-min.js"></script>
   <![endif]--><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Using FiPy &#8212; FiPy 3.1.3+1013.g86cb0e44 documentation</title>
+    <title>Using FiPy &#8212; FiPy 3.1.3+1030.g78493e30 documentation</title>
     <link rel="stylesheet" href="_static/ntd2d.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
@@ -43,13 +43,13 @@
     <link rel="stylesheet" type="text/css" href="_static/plot_directive.css" />
     <link rel="stylesheet" type="text/css" href="_static/widetable.css?v=32b6a719" />
     <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
-    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js?v=11dd2392"></script>
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js?v=75804dba"></script>
     <script src="_static/doctools.js?v=888ff710"></script>
     <script src="_static/sphinx_highlight.js?v=4825356b"></script>
     <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="top" title="FiPy 3.1.3+1013.g86cb0e44 documentation" href="contents.html" />
+    <link rel="top" title="FiPy 3.1.3+1030.g78493e30 documentation" href="contents.html" />
     <link rel="up" title="Introduction" href="introduction.html" />
     <link rel="next" title="Frequently Asked Questions" href="FAQ.html" />
     <link rel="prev" title="Viewers" href="VIEWERS.html" />
@@ -389,6 +389,16 @@ files can be found in <code class="file docutils literal notranslate"><em><span 
 <a class="reference internal" href="generated/fipy.solvers.pyAMG.linearGeneralSolver.html#fipy.solvers.pyAMG.linearGeneralSolver.LinearGeneralSolver" title="fipy.solvers.pyAMG.linearGeneralSolver.LinearGeneralSolver"><code class="xref py py-class docutils literal notranslate"><span class="pre">LinearGeneralSolver</span></code></a> to
 print a variety of diagnostic information.  All other solvers should use
 <a class="reference internal" href="#logging">Logging</a> and <span class="target" id="index-2"></span><a class="reference internal" href="#envvar-FIPY_LOG_CONFIG"><code class="xref std std-envvar docutils literal notranslate"><span class="pre">FIPY_LOG_CONFIG</span></code></a>.</p>
+</dd></dl>
+
+<dl class="std envvar">
+<dt class="sig sig-object std" id="envvar-FIPY_DEFAULT_CRITERION">
+<span class="sig-name descname"><span class="pre">FIPY_DEFAULT_CRITERION</span></span><a class="headerlink" href="#envvar-FIPY_DEFAULT_CRITERION" title="Permalink to this definition">¶</a></dt>
+<dd><p>Changes the default solver <a class="reference internal" href="SOLVERS.html#convergence"><span class="std std-ref">Convergence</span></a> criterion to the specified
+value.  Valid choices are “<code class="docutils literal notranslate"><span class="pre">legacy</span></code>”, “<code class="docutils literal notranslate"><span class="pre">unscaled</span></code>”, “<code class="docutils literal notranslate"><span class="pre">RHS</span></code>”,
+“<code class="docutils literal notranslate"><span class="pre">matrix</span></code>”, “<code class="docutils literal notranslate"><span class="pre">initial</span></code>”, “<code class="docutils literal notranslate"><span class="pre">solution</span></code>”, “<code class="docutils literal notranslate"><span class="pre">preconditioned</span></code>”,
+“<code class="docutils literal notranslate"><span class="pre">natural</span></code>”, “<code class="docutils literal notranslate"><span class="pre">default</span></code>”.  A value of “<code class="docutils literal notranslate"><span class="pre">default</span></code>” is admittedly
+circular, but it works.</p>
 </dd></dl>
 
 <dl class="std envvar">
@@ -1135,7 +1145,7 @@ $ wget -O en_US.dic https://cgit.freedesktop.org/libreoffice/dictionaries/plain/
 
 
                 <div class='last-updated'>
-                Last updated on Nov 07, 2023.
+                Last updated on Nov 13, 2023.
                 Created using <a href="http://sphinx-doc.org/">Sphinx</a> 7.1.2.
                 </div>
               </div>
@@ -1145,7 +1155,7 @@ $ wget -O en_US.dic https://cgit.freedesktop.org/libreoffice/dictionaries/plain/
         <div class="sphinxsidebarwrapper">
 
 <strong>FiPy: A Finite Volume PDE Solver Using Python</strong><br />
-Version 3.1.3+1013.g86cb0e44
+Version 3.1.3+1030.g78493e30
 
   <div class="sphinxsidebarsection">
   <h3><a href="contents.html">Table Of Contents</a></h3>

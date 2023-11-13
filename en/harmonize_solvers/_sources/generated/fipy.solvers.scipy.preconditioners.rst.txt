@@ -29,5 +29,5 @@ fipy.solvers.scipy.preconditioners
 
    fipy.solvers.scipy.preconditioners.iluPreconditioner
    fipy.solvers.scipy.preconditioners.jacobiPreconditioner
-   fipy.solvers.scipy.preconditioners.preconditioner
+   fipy.solvers.scipy.preconditioners.scipyPreconditioner
 

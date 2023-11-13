@@ -41,6 +41,12 @@ fipy.solvers.convergence
 
    
    
+   .. rubric:: Exceptions
+
+   .. autosummary::
+   
+      DivergenceWarning
+   
    
 
 

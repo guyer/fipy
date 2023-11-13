@@ -27,7 +27,7 @@ fipy.solvers.pyamgx.preconditioners
       ILUPreconditioner
       JacobiPreconditioner
       PolynomialPreconditioner
-      Preconditioner
+      PyAMGXPreconditioner
    
    
 
