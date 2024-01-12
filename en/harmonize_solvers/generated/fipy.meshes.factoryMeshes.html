@@ -35,7 +35,7 @@
   <script type="text/javascript" src="https://www.nist.gov/sites/all/themes/nist_style/js/selectivizr-min.js"></script>
   <![endif]--><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>fipy.meshes.factoryMeshes &#8212; FiPy 3.1.3+1051.g36bff3800 documentation</title>
+    <title>fipy.meshes.factoryMeshes &#8212; FiPy 3.1.3+1091.gdd41d328c documentation</title>
     <link rel="stylesheet" href="../_static/ntd2d.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=fa44fd50" />
@@ -43,12 +43,12 @@
     <link rel="stylesheet" type="text/css" href="../_static/plot_directive.css" />
     <link rel="stylesheet" type="text/css" href="../_static/widetable.css?v=32b6a719" />
     <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
-    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js?v=eb27ea35"></script>
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js?v=e50ff6bb"></script>
     <script src="../_static/doctools.js?v=888ff710"></script>
     <script src="../_static/sphinx_highlight.js?v=4825356b"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="top" title="FiPy 3.1.3+1051.g36bff3800 documentation" href="../contents.html" />
+    <link rel="top" title="FiPy 3.1.3+1091.gdd41d328c documentation" href="../contents.html" />
     <link rel="up" title="fipy.meshes" href="fipy.meshes.html" />
     <link rel="next" title="fipy.meshes.gmshMesh" href="fipy.meshes.gmshMesh.html" />
     <link rel="prev" title="fipy.meshes.cylindricalUniformGrid2D" href="fipy.meshes.cylindricalUniformGrid2D.html" />
@@ -264,7 +264,7 @@ purposes.  (default: <a class="reference internal" href="fipy.tools.html#fipy.to
 <span class="sig-prename descclassname"><span class="pre">fipy.meshes.factoryMeshes.</span></span><span class="sig-name descname"><span class="pre">Grid3D</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dx</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dy</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dz</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nx</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ny</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nz</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">Lx</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">Ly</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">Lz</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">overlap</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">2</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">communicator</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">DummyComm()</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#fipy.meshes.factoryMeshes.Grid3D" title="Permalink to this definition">¶</a></dt>
 <dd><p>Create a 3D Cartesian mesh</p>
 <p>Factory function to select between
-<code class="xref py py-class docutils literal notranslate"><span class="pre">UniformGrid3D</span></code> and
+<a class="reference internal" href="fipy.meshes.uniformGrid3D.html#fipy.meshes.uniformGrid3D.UniformGrid3D" title="fipy.meshes.uniformGrid3D.UniformGrid3D"><code class="xref py py-class docutils literal notranslate"><span class="pre">UniformGrid3D</span></code></a> and
 <a class="reference internal" href="fipy.meshes.nonUniformGrid3D.html#fipy.meshes.nonUniformGrid3D.NonUniformGrid3D" title="fipy.meshes.nonUniformGrid3D.NonUniformGrid3D"><code class="xref py py-class docutils literal notranslate"><span class="pre">NonUniformGrid3D</span></code></a>.  If <cite>L{x,y,z}</cite>
 is specified, the length of the domain is always <cite>L{x,y,z}</cite> regardless
 of <cite>d{x,y,z}</cite>, unless <cite>d{x,y,z}</cite> is a list of spacings, in which case
@@ -324,7 +324,7 @@ purposes.  (default: <a class="reference internal" href="fipy.tools.html#fipy.to
 
 
                 <div class='last-updated'>
-                Last updated on Dec 24, 2023.
+                Last updated on Jan 12, 2024.
                 Created using <a href="http://sphinx-doc.org/">Sphinx</a> 7.1.2.
                 </div>
               </div>
@@ -334,7 +334,7 @@ purposes.  (default: <a class="reference internal" href="fipy.tools.html#fipy.to
         <div class="sphinxsidebarwrapper">
 
 <strong>FiPy: A Finite Volume PDE Solver Using Python</strong><br />
-Version 3.1.3+1051.g36bff3800
+Version 3.1.3+1091.gdd41d328c
 
   <div class="sphinxsidebarsection">
   <h3><a href="../contents.html">Table Of Contents</a></h3>
