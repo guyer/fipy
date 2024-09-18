@@ -6,6 +6,8 @@ Trivial change
 
 Another trivial change
 
+One more
+
 | |Tests|_ |Documentation|_ |nix|_
 | |GitHub|_ |PyPI|_  |CondaForge|_ |Binder|_
 | |gitter|_ |OpenHub|_
