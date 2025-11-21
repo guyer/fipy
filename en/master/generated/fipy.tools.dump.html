@@ -134,11 +134,11 @@ Wrapper for <cite>cPickle.load()</cite>.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>filename</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><em>str</em></a>) – Name of the file to unpickle the object from.  If the filename
+<li><p><strong>filename</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><em>str</em></a>) – Name of the file to unpickle the object from.  If the filename
 extension is <cite>.gz</cite>, the file is first decompressed.</p></li>
 <li><p><strong>fileobject</strong> (<em>file</em>) – Used to remove temporary files</p></li>
 <li><p><strong>communicator</strong> (<a class="reference internal" href="fipy.tools.comms.commWrapper.html#fipy.tools.comms.commWrapper.CommWrapper" title="fipy.tools.comms.commWrapper.CommWrapper"><em>CommWrapper</em></a>) – A duck-typed object with <cite>procID</cite> and <cite>Nproc</cite> attributes is sufficient</p></li>
-<li><p><strong>mesh_unmangle</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.13)"><em>bool</em></a>) – Whether to correct improper pickling of non-uniform meshes (ticket:243)</p></li>
+<li><p><strong>mesh_unmangle</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.14)"><em>bool</em></a>) – Whether to correct improper pickling of non-uniform meshes (ticket:243)</p></li>
 </ul>
 </dd>
 </dl>
@@ -162,12 +162,12 @@ extension is <cite>.gz</cite>, the file is first decompressed.</p></li>
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>data</strong> – Object to be pickled.</p></li>
-<li><p><strong>filename</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><em>str</em></a>) – Name of the file to place the pickled object.  If <cite>filename</cite> is
+<li><p><strong>filename</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><em>str</em></a>) – Name of the file to place the pickled object.  If <cite>filename</cite> is
 <cite>None</cite> then a temporary file will be used and the file object and
 file name will be returned as a tuple.
 If the filename ends in <cite>.gz</cite>, the file is automatically saved in
 compressed gzip format.</p></li>
-<li><p><strong>extension</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><em>str</em></a>) – File extension to append if <cite>filename</cite> is not given.  If set to
+<li><p><strong>extension</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><em>str</em></a>) – File extension to append if <cite>filename</cite> is not given.  If set to
 <cite>.gz</cite>, the file is automatically saved in compressed gzip format.</p></li>
 <li><p><strong>communicator</strong> (<a class="reference internal" href="fipy.tools.comms.commWrapper.html#fipy.tools.comms.commWrapper.CommWrapper" title="fipy.tools.comms.commWrapper.CommWrapper"><em>CommWrapper</em></a>) – A duck-typed object with <cite>procID</cite> and <cite>Nproc</cite> attributes is sufficient</p></li>
 </ul>
@@ -179,7 +179,7 @@ compressed gzip format.</p></li>
 
 
                 <div class='last-updated'>
-                Last updated on Jun 05, 2025.
+                Last updated on Nov 21, 2025.
                 Created using <a href="http://sphinx-doc.org/">Sphinx</a> 7.1.2.
                 </div>
               </div>
